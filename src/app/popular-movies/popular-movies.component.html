@@ -12,10 +12,10 @@
       <mat-toolbar-row>
         <span class="example-spacer"></span>
         <span>page</span>&nbsp;&nbsp;{{popularMovies.page}} of {{popularMovies.total_pages}}
-        <button mat-icon-button (click)="pageChange(popularMovies.page-1)">
+        <button mat-icon-button (click)="pageChange(popularMovies.page-1)" [disabled]="popularMovies.page == 1">
           <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">keyboard_arrow_left</mat-icon>
         </button>
-        <button mat-icon-button (click)="pageChange(popularMovies.page+1)">
+        <button mat-icon-button (click)="pageChange(popularMovies.page+1)" [disabled]="popularMovies.total_pages == popularMovies.page">
           <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">keyboard_arrow_right</mat-icon>
         </button>
       </mat-toolbar-row>
