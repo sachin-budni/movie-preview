@@ -17,7 +17,14 @@ export class PopularMoviesComponent implements OnInit {
     this.pageChange(1);
     // this.$popularMovies = this.movieService.getPopularMovies(1);
   }
-  pageChange(d){
+  pageChange(d:number){
     this.$popularMovies = this.movieService.getPopularMovies(d);
   }
+
+  // getMovieDetails(id){
+  //   this.movieService.getMovieDetails(id).toPromise().then(movie=>{
+  //     console.log(movie)
+  //   })
+  // }
+
 }

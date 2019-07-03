@@ -18,6 +18,12 @@ import {
         MatButtonModule
       } from '@angular/material';
 import { MovieService } from './service/movie.service';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { LatestMoviesComponent } from './latest-movies/latest-movies.component';
+import { TopRatedComponent } from './top-rated/top-rated.component';
+import { UpcommingComponent } from './upcomming/upcomming.component';
+import { NowPlayingComponent } from './now-playing/now-playing.component';
+import { MovieComponent } from './movie/movie.component';
 const materialModules = [
   MatSidenavModule,
   MatToolbarModule,
@@ -31,6 +37,12 @@ const materialModules = [
     AppComponent,
     TrendingChartComponent,
     PopularMoviesComponent,
+    MovieDetailsComponent,
+    LatestMoviesComponent,
+    TopRatedComponent,
+    UpcommingComponent,
+    NowPlayingComponent,
+    MovieComponent,
   ],
   imports: [
     BrowserModule,
