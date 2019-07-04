@@ -3,9 +3,11 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Responsive App</h1>
   </mat-toolbar> -->
-
   <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" disableClose="true" opened class="example-side-nav">
+    <mat-sidenav #snav [mode]="mobileQuery.matches?'over':'side'" disableClose="true" [opened]="!mobileQuery.matches" class="example-side-nav">
+      <div style="float: right" *ngIf="mobileQuery.matches">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon style="color: white !important">menu</mat-icon></button>
+      </div>
       <mat-nav-list class="nav-list">
         <a mat-list-item *ngFor="let nav of routerLinks" routerLinkActive="active"  routerLink="{{nav.path}}">
             {{nav.name}}
@@ -14,6 +16,9 @@
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
       <!-- <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button> -->
+      <div *ngIf="mobileQuery.matches" class="button-menu">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon style="color: white !important">menu</mat-icon></button>
+      </div>
       <div class="routerdata">
         <router-outlet (activate)="ActivetedRouter($event)"></router-outlet>
       </div>
@@ -21,4 +26,4 @@
   </mat-sidenav-container>
 </div>
 
-[fixedInViewport]="true"
+<!-- [fixedInViewport]="true" -->
