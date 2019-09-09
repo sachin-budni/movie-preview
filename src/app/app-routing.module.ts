@@ -21,8 +21,8 @@ const routes: Routes = [
   {path:'topratedmovies/:id',component:MovieDetailsComponent},
   {path:'nowplayingmovies/:id',component:MovieDetailsComponent},
   
-  {path:'**',redirectTo:'/trendingchart',pathMatch:'full'},
-  {path:'',redirectTo:'/trendingchart',pathMatch:'full'},
+  {path:'**',redirectTo:'/popularmovies',pathMatch:'full'},
+  {path:'',redirectTo:'/popularmovies',pathMatch:'full'},
 ];
 
 @NgModule({

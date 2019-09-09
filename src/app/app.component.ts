@@ -7,7 +7,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'movie-preview';
+  // title = 'movie-preview';
   activetedRouterName:any;
   routerLinks = [
     {path:"trendingchart",name:"Trending Charts"},
@@ -33,5 +33,5 @@ export class AppComponent {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-
+  
 }

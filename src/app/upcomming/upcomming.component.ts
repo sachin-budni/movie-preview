@@ -20,9 +20,6 @@ export class UpcommingComponent implements OnInit {
   }
   pageChange(d){
     this.$upcommingMovies = this.movieService.getUpcommingMovies(d);
-    this.$upcommingMovies.toPromise().then(data=>{
-      console.log(data)
-    })
   }
 
 }

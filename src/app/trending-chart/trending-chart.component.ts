@@ -13,7 +13,7 @@ export class TrendingChartComponent implements OnInit {
   rating=[];
   movieTitles=[]; 
   error= 'Loading...';
-  @ViewChild('main') main:ElementRef;
+  @ViewChild('main', { static: true }) main:ElementRef;
   
   constructor(private movieService:MovieService) { }
   ngOnInit() {
@@ -79,7 +79,7 @@ export class TrendingChartComponent implements OnInit {
         {
             name:'Rating',
             type:'bar',
-            barWidth: '20%',
+            barWidth: 20,
             data:this.rating
         }
     ]

@@ -19,8 +19,5 @@ export class LatestMoviesComponent implements OnInit {
   }
   pageChange(){
     this.$latestMovies = this.movieService.getLatestMovies();
-    this.$latestMovies.toPromise().then(data=>{
-      console.log(data)
-    })
   }
 }

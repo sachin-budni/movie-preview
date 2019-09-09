@@ -12,10 +12,12 @@
         <span class="example-spacer"></span>
         <span>page</span>&nbsp;&nbsp;{{Movies.page}} of {{Movies.total_pages}}
         <button mat-icon-button (click)="pageChange(Movies.page-1)" [disabled]="Movies.page == 1">
-          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">keyboard_arrow_left</mat-icon>
+          <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">keyboard_arrow_left</mat-icon> -->
+          <img src="assets/left_arrow.svg" alt="left_arrow">
         </button>
         <button mat-icon-button (click)="pageChange(Movies.page+1)" [disabled]="Movies.total_pages == Movies.page">
-          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">keyboard_arrow_right</mat-icon>
+          <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">keyboard_arrow_right</mat-icon> -->
+          <img src="assets/right_arrow.svg" alt="right_arrow">
         </button>
       </mat-toolbar-row>
     </mat-toolbar>

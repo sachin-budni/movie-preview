@@ -20,9 +20,6 @@ export class TopRatedComponent implements OnInit {
   }
   pageChange(d){
     this.$topRatedMovies = this.movieService.getPopularMovies(d);
-    this.$topRatedMovies.toPromise().then(data=>{
-      console.log(data)
-    })
   }
 
 }

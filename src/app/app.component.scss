@@ -21,7 +21,15 @@
   .example-sidenav-container {
     /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
        causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-    flex: 1;
+      //  position: fixed;
+    // flex: 1;
+  }
+
+  .sidenav-div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
   }
   
   .example-is-mobile .example-sidenav-container {
@@ -32,11 +40,16 @@
   .example-side-nav{
     width: 250px;
     background-color: #353941;
-    border-right:0px;
+    border-right: 1px solid;
+    position: fixed;
   }
   .sidenav-content{
     background-color:#353941;
-    border: 1px solid;
+    // position: fixed;
+    // top: 0;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
   }
 .nav-list{
   padding: 70px 10px 0px 10px;
@@ -53,11 +66,12 @@
   // padding: 70px 100px 20px 100px;
   margin: 0% auto;
   max-width: 1300px;
+  overflow: auto;
   width: 100%;
 }
 .active{
   background-color:rgba(0,0,0,0.3) !important;
 }
 .button-menu{
-  position: fixed;
+  position: relative;
 }
