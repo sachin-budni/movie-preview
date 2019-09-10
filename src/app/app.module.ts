@@ -45,7 +45,7 @@ const materialModules = [
     MovieComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     materialModules,
