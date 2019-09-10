@@ -21,12 +21,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
 }
 .title{
     font-size: 40px;
     color: white;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 .extra-space{
     flex: 1 1 auto;
