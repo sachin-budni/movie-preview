@@ -8,15 +8,6 @@ import { PopularMoviesComponent } from './popular-movies/popular-movies.componen
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
-import {
-        MatSidenavModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatListModule,
-        MatCardModule,
-        MatPaginatorModule,
-        MatButtonModule
-      } from '@angular/material';
 import { MovieService } from './service/movie.service';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { LatestMoviesComponent } from './latest-movies/latest-movies.component';
@@ -24,14 +15,12 @@ import { TopRatedComponent } from './top-rated/top-rated.component';
 import { UpcommingComponent } from './upcomming/upcomming.component';
 import { NowPlayingComponent } from './now-playing/now-playing.component';
 import { MovieComponent } from './movie/movie.component';
-const materialModules = [
-  MatSidenavModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatListModule,
-  MatCardModule,
-  MatButtonModule
-]
+import { DemoMaterialModule } from './material.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MovieNavComponent } from './movie-nav/movie-nav.component';
+import { TvNavComponent } from './tv-nav/tv-nav.component';
+import { PeopleNavComponent } from './people-nav/people-nav.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,15 +32,19 @@ const materialModules = [
     UpcommingComponent,
     NowPlayingComponent,
     MovieComponent,
+    MovieNavComponent,
+    TvNavComponent,
+    PeopleNavComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
-    materialModules,
     HttpClientModule,
     NgxEchartsModule,
-    MatPaginatorModule
+    DemoMaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

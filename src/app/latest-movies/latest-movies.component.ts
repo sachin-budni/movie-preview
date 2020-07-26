@@ -14,6 +14,7 @@ export class LatestMoviesComponent implements OnInit {
   constructor(private movieService:MovieService) { }
 
   ngOnInit() {
+    this.movieService.setTitle('Latest Movies');
     this.pageChange();
     // this.$popularMovies = this.movieService.getPopularMovies(1);
   }

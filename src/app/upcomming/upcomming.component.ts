@@ -16,6 +16,7 @@ export class UpcommingComponent implements OnInit {
   constructor(private movieService:MovieService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
+    this.movieService.setTitle('Up-Coming Movies');
     this.route.queryParams.subscribe(params=>{
       if(params.page){
         this.pageChange(params.page);

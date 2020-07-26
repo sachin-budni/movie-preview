@@ -7,22 +7,28 @@ import { UpcommingComponent } from './upcomming/upcomming.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
 import { NowPlayingComponent } from './now-playing/now-playing.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { MovieNavComponent } from './movie-nav/movie-nav.component';
+import { TvNavComponent } from './tv-nav/tv-nav.component';
+import { PeopleNavComponent } from './people-nav/people-nav.component';
 
 const routes: Routes = [
-  {path:'trendingchart',component:TrendingChartComponent},
-  {path:'popularmovies',component:PopularMoviesComponent},
-  {path:'latestmovies',component:LatestMoviesComponent},
-  {path:'upcommingmovies',component:UpcommingComponent},
-  {path:'topratedmovies',component:TopRatedComponent},
-  {path:'nowplayingmovies',component:NowPlayingComponent},
+  { path: 'movie/:id', component: MovieNavComponent },
+  { path: 'tv/:id', component: TvNavComponent },
+  { path: 'person/:id', component: PeopleNavComponent },
+  { path: 'trendingchart', component: TrendingChartComponent },
+  { path: 'popularmovies', component: PopularMoviesComponent },
+  { path: 'latestmovies', component: LatestMoviesComponent },
+  { path: 'upcommingmovies', component: UpcommingComponent },
+  { path: 'topratedmovies', component: TopRatedComponent },
+  { path: 'nowplayingmovies', component: NowPlayingComponent },
 
-  {path:'popularmovies/:id',component:MovieDetailsComponent},
-  {path:'upcommingmovies/:id',component:MovieDetailsComponent},
-  {path:'topratedmovies/:id',component:MovieDetailsComponent},
-  {path:'nowplayingmovies/:id',component:MovieDetailsComponent},
-  
-  {path:'**',redirectTo:'/popularmovies',pathMatch:'full'},
-  {path:'',redirectTo:'/popularmovies',pathMatch:'full'},
+  { path: 'popularmovies/:id', component: MovieDetailsComponent },
+  { path: 'upcommingmovies/:id', component: MovieDetailsComponent },
+  { path: 'topratedmovies/:id', component: MovieDetailsComponent },
+  { path: 'nowplayingmovies/:id', component: MovieDetailsComponent },
+
+  { path: '**', redirectTo: '/popularmovies', pathMatch: 'full' },
+  { path: '', redirectTo: '/popularmovies', pathMatch: 'full' },
 ];
 
 @NgModule({

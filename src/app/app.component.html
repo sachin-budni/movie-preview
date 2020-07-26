@@ -7,9 +7,11 @@
         </button>
       </div>
       <mat-nav-list class="nav-list">
-        <a mat-list-item *ngFor="let nav of routerLinks" routerLinkActive="active"  routerLink="{{nav.path}}">
-            {{nav.name}}
-        </a>
+        <div *ngIf="(movie.getRoutingNavigation) | async as route">
+          <a mat-list-item *ngFor="let nav of route" routerLinkActive="active"  routerLink="{{nav.path}}" [queryParams]="{ page: nav.query }">
+              {{nav.name}}
+          </a>
+        </div>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="sidenav-content">
@@ -20,6 +22,31 @@
           </button>
         </div>
         <div class="routerdata">
+          <mat-toolbar class="menu-bar">
+            <div class="row">
+              <button mat-stroked-button [routerLink]="['/movie/popular']" [queryParams]="{ page: 1 }">Movies</button>
+              <button mat-stroked-button [routerLink]="['/tv/popular']" [queryParams]="{ page: 1 }">TV Show</button>
+              <button mat-stroked-button [routerLink]="['/person/popular']" [queryParams]="{ page: 1 }">Peoples</button>
+            </div>
+            <span class="example-spacer"></span>
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input type="text"
+                        placeholder="Search Movie"
+                        aria-label="Number"
+                        matInput
+                        [formControl]="movieSearch"
+                        [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of options" [value]="option.id">
+                    <img class="example-option-img" aria-hidden [src]="'https://image.tmdb.org/t/p/w500'+option.backdrop_path" height="25">
+                    <span>{{option.title}}</span> |
+                    <small>Vote: {{option.vote_average}}</small>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+          </mat-toolbar>
           <router-outlet (activate)="ActivetedRouter($event)"></router-outlet>
         </div>
       </div>
