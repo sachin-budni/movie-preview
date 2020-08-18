@@ -24,7 +24,27 @@
       //  position: fixed;
     // flex: 1;
   }
-
+  .search-bar{
+    width: calc(100% - 100px);
+    margin: 0px 50px; 
+  }
+  .example-full-width{
+    width: 100%;
+    color: white;
+  }
+  .options {
+    background-color: #272727;
+    color: white;
+  }
+  .options:hover {
+    background-color: #353941 !important;
+  }
+  .mat-option.mat-active {
+    background-color: #353941 !important;
+  }
+  .lable{
+    color: white;
+  }
   .sidenav-div{
     width: 100%;
     height: 100%;
@@ -65,7 +85,6 @@
     font-size: 14px;
 }
 .routerdata{
-  // padding: 70px 100px 20px 100px;
   margin: 0% auto;
   max-width: 1300px;
   overflow: auto;
@@ -76,4 +95,34 @@
 }
 .button-menu{
   position: relative;
+}
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+  border: 1px solid white;
+  width: 35px;
+}
+.text-drop p{
+  margin: 0px;
+  padding: 0px;
+  line-height: 0px;
+  margin-top: 24px;
+}
+.rate{
+  font-size: 18px;
+  margin-right: 0px !important;
+}
+.filter {
+  padding: 20px;
+  p {
+    font-family: "Poppins", sans-serif;
+    color: white;
+    font-size: 20px;
+  }
+  .m-b-10{
+    margin-bottom: 10px;
+  }
+}
+.lang-sub {
+  background-color: rgba(0, 0, 0, 0.3) !important;
 }

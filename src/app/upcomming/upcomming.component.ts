@@ -10,23 +10,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UpcommingComponent implements OnInit {
 
-  routeName='upcommingmovies'
-  $upcommingMovies:Observable<any>;
+  routeName = 'upcommingmovies';
+  $upcommingMovies: Observable<any>;
 
-  constructor(private movieService:MovieService,private route:ActivatedRoute,private router:Router) { }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params=>{
-      if(params.page){
+    this.route.queryParams.subscribe(params => {
+      if (params.page) {
         this.pageChange(params.page);
-      }else{
-        this.router.navigate(['upcommingmovies'],{ queryParams: { page: 1 } })
+      } else {
+        this.router.navigate(['upcommingmovies'], { queryParams: { page: 1 } });
       }
-    })
-    // this.pageChange(1);
-    // this.$popularMovies = this.movieService.getPopularMovies(1);
+    });
   }
-  pageChange(d){
+  pageChange(d) {
     this.$upcommingMovies = this.movieService.getUpcommingMovies(d);
   }
 

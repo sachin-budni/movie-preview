@@ -11,15 +11,6 @@
     background-size: cover;
   }
   .movies{
-    // height: 100%;
-    // flex-direction: row;
-    // box-sizing: border-box;
-    // display: flex;
-    // // place-content: stretch space-around;
-    // align-content: stretch;
-    // justify-content: space-around;
-    // align-items: stretch;
-    // max-height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -30,9 +21,13 @@
     color: white;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
+    transition: 0.5s;
   }
-  .movie-title:hover{
-    text-decoration: underline;
+  .example-card:hover{
+    margin-top: 15px;
+  }
+  .example-card:hover .card-image{
+    box-shadow: 8px 0px 26px rgb(75, 74, 74)
   }
   .card-content{
     text-align: center;

@@ -9,30 +9,30 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./popular-movies.component.scss']
 })
 export class PopularMoviesComponent implements OnInit {
-  routeName='popularmovies'
-  $popularMovies:Observable<any>;
+  routeName = 'popularmovies';
+  $popularMovies: Observable<any>;
 
-  constructor(private movieService:MovieService,private route:ActivatedRoute,private router:Router) { }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params=>{
-      if(params.page){
-        this.pageChange(params.page);
-      }else{
-        this.router.navigate(['popularmovies'],{ queryParams: { page: 1 } })
+    this.route.queryParams.subscribe(params => {
+      if (params.page || params.language) {
+        this.pageChange(params);
+      } else {
+        this.router.navigate(['popularmovies'], { queryParams: { page: 1 } });
       }
-    })
-    // this.pageChange(1);
-    // this.$popularMovies = this.movieService.getPopularMovies(1);
-  }
-  pageChange(d:number){
-    this.$popularMovies = this.movieService.getPopularMovies(d);
+    });
   }
 
-  // getMovieDetails(id){
-  //   this.movieService.getMovieDetails(id).toPromise().then(movie=>{
-  //     console.log(movie)
-  //   })
-  // }
+  pageChange(params) {
+    const paramObj = {} as any;
+    if (params.language) {
+      paramObj.with_original_language = params.language;
+      paramObj.page = params.page;
+    } else {
+      paramObj.page = params.page;
+    }
+    this.$popularMovies = this.movieService.getPopularMovies(paramObj);
+  }
 
 }

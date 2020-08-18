@@ -7,35 +7,58 @@ import { Movie } from '../model/movie';
   providedIn: 'root'
 })
 export class MovieService {
+  key = '4b10cf2f8e6ed1fcb506bd3929ecee40';
+  api = 'https://api.themoviedb.org/3';
+  languages: [];
+  constructor(private http: HttpClient) { }
 
-  constructor(private http:HttpClient) { }
+  get getLanguages() {
+    return this.http.get(`${this.api}/configuration/languages?api_key=${this.key}`);
+  }
 
-  getPopularMovies(index):Observable<any>{
-    let api = 'https://api.themoviedb.org/3/movie/popular?api_key=4b10cf2f8e6ed1fcb506bd3929ecee40&language=en-US&page='+index
+  get getCountries() {
+    return this.http.get(`${this.api}/configuration/countries?api_key=${this.key}`);
+  }
+
+  getMovieVideos(id) {
+    return this.http.get(`${this.api}/movie/${id}/videos?api_key=${this.key}`);
+  }
+
+  getPopularMovies(params): Observable<any> {
+    let api = '';
+    if (params.with_original_language) {
+      api = `${this.api}/movie/popular?api_key=${this.key}&language=en-US&page=${params.page}&with_original_language=${params.with_original_language}`;
+    } else {
+      api = `${this.api}/movie/popular?api_key=${this.key}&language=en-US&page=${params.page}`;
+    }
     return this.http.get(api);
   }
 
-  getTrendingCharts(){
-    return this.http.get("https://api.themoviedb.org/3/trending/all/day?api_key=4b10cf2f8e6ed1fcb506bd3929ecee40");
+  getTrendingCharts() {
+    return this.http.get(`${this.api}/trending/all/day?api_key=${this.key}`);
   }
 
-  getMovieDetails(id){
-    return this.http.get(`https://api.themoviedb.org/3/movie/${id}?api_key=4b10cf2f8e6ed1fcb506bd3929ecee40&language=en-US`);
-  }
-  
-  getTopRatedMovies(index){
-    return this.http.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=4b10cf2f8e6ed1fcb506bd3929ecee40&language=en-US&page=${index}`);
+  getMovieDetails(id) {
+    return this.http.get(`${this.api}/movie/${id}?api_key=${this.key}&language=en-US&append_to_response=videos`);
   }
 
-  getUpcommingMovies(index){
-    return this.http.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=4b10cf2f8e6ed1fcb506bd3929ecee40&language=en-US&page=${index}`);
+  getTopRatedMovies(index) {
+    return this.http.get(`${this.api}/movie/top_rated?api_key=${this.key}&language=en-US&page=${index}`);
   }
 
-  getLatestMovies(){
-    return this.http.get(`https://api.themoviedb.org/3/movie/latest?api_key=4b10cf2f8e6ed1fcb506bd3929ecee40&language=en-US`);
+  getUpcommingMovies(index) {
+    return this.http.get(`${this.api}/movie/upcoming?api_key=${this.key}&language=en-US&page=${index}`);
   }
 
-  getNowPlayingMovies(index){
-    return this.http.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=4b10cf2f8e6ed1fcb506bd3929ecee40&language=en-US&page=${index}`);
+  getLatestMovies() {
+    return this.http.get(`${this.api}/movie/latest?api_key=${this.key}&language=en-US`);
+  }
+
+  getNowPlayingMovies(index) {
+    return this.http.get(`${this.api}/movie/now_playing?api_key=${this.key}&language=en-US&page=${index}`);
+  }
+
+  searchMovieName(movie) {
+    return this.http.get(`${this.api}/search/movie?api_key=${this.key}&language=en-US&query=${movie}&page=1&include_adult=false`);
   }
 }

@@ -15,7 +15,11 @@ import {
         MatListModule,
         MatCardModule,
         MatPaginatorModule,
-        MatButtonModule
+        MatButtonModule,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule
       } from '@angular/material';
 import { MovieService } from './service/movie.service';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
@@ -24,14 +28,18 @@ import { TopRatedComponent } from './top-rated/top-rated.component';
 import { UpcommingComponent } from './upcomming/upcomming.component';
 import { NowPlayingComponent } from './now-playing/now-playing.component';
 import { MovieComponent } from './movie/movie.component';
+import { ReactiveFormsModule } from '@angular/forms';
 const materialModules = [
   MatSidenavModule,
   MatToolbarModule,
   MatIconModule,
   MatListModule,
   MatCardModule,
-  MatButtonModule
-]
+  MatButtonModule,
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatInputModule
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +59,9 @@ const materialModules = [
     materialModules,
     HttpClientModule,
     NgxEchartsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

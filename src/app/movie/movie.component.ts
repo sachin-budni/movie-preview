@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ElementRef, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, Input, ElementRef, EventEmitter, Output } from '@angular/core';
 import { MovieService } from '../service/movie.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'movie',
@@ -13,16 +14,24 @@ export class MovieComponent implements OnInit {
   @Output() pages = new EventEmitter<number>();
   // @Output() movieDetails = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
-  getMovieDetails(id:number){
+  getMovieDetails(id: number) {
   }
 
-  pageChange(d:number){
-    this.pages.emit(d);
+  pageChange(d: number) {
+    const params = this.route.snapshot.queryParams;
+    const paramObj = {} as any;
+    if (params.language) {
+      paramObj.language = params.language;
+      paramObj.page = d;
+      this.pages.emit(paramObj);
+    } else {
+      this.pages.emit(d);
+    }
   }
 
 }

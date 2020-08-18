@@ -10,22 +10,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NowPlayingComponent implements OnInit {
 
-  routeName='nowplayingmovies'
-  $nowPlayingMovies:Observable<any>;
+  routeName = 'nowplayingmovies';
+  $nowPlayingMovies: Observable<any>;
 
-  constructor(private movieService:MovieService,private route:ActivatedRoute,private router:Router) { }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params=>{
-      if(params.page){
+    this.route.queryParams.subscribe(params => {
+      if (params.page) {
         this.pageChange(params.page);
-      }else{
-        this.router.navigate(['nowplayingmovies'],{ queryParams: { page: 1 } })
+      } else {
+        this.router.navigate(['nowplayingmovies'], { queryParams: { page: 1 } });
       }
-    })
-    // this.pageChange(1);
+    });
   }
-  pageChange(d){
+  pageChange(d) {
     this.$nowPlayingMovies = this.movieService.getNowPlayingMovies(d);
   }
 

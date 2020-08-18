@@ -1,16 +1,18 @@
 
 
 <div class="main-movie" *ngIf="$movieDetails | async as movie">
-    <!-- {{movie | json}} -->
   <div class="movie-title">
       <p class="title">{{movie.title}}</p>
-  </div>
-  <div class="main-poster">
-      <img class="poster" [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path" alt="">
+    </div>
+    <span class="tag-line">{{ movie.original_title }}</span>
+    <p class="tag-line">{{movie.tagline}}</p>
+  <div class="main-poster row justify-content-center" >
+      <img class="poster poster-img" [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w500'+movie.poster_path : 'assets/no_poster.jpg'" alt="">
   </div>
   <div class="movie-title">
-    <div *ngFor="let item of movie.production_companies">
-        <img class="poster-company" [src]="'https://image.tmdb.org/t/p/w500'+item.logo_path" alt="">
+
+    <div class="languages">
+      Languages : <span *ngFor="let lang of movie.spoken_languages"> {{lang.name}} </span>
     </div>
     <span class="extra-space"></span>
     <p class="rating-num">
@@ -19,17 +21,19 @@
     <img class="title-link" src="assets/star.png" alt="">
   </div>
   <div>
-    <a href="https://www.imdb.com/title/{{movie.imdb_id}}" target="_blank" style="color: white">
-      <img class="title-link1" src="assets/imdb.jpg" alt="imdb">
-    </a>
-    <a [href]="movie.homepage" target="_blank" style="color: white">
-      <img class="title-link1" src="assets/marvel.png" alt="imdb">
-    </a>
-  </div>
-  <div>
     <p class="overview">
         {{movie.overview}}
     </p>
   </div>
-  <img class="poster last" [src]="'https://image.tmdb.org/t/p/w500'+movie.backdrop_path" alt="">
+  <ng-container *ngIf="movie?.backdrop_path">
+    <img class="poster last" [src]="'https://image.tmdb.org/t/p/w500'+movie.backdrop_path" alt="">
+  </ng-container>
+  <!-- {{$video | async | json}} -->
+  <ng-container *ngFor="let video of movie.videos?.results">
+    <div class="videoWrapper">
+      <iframe class="video"
+        [src]="getVideo(video)">
+      </iframe>
+    </div>
+  </ng-container>
 </div>
