@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MovieService } from './service/movie.service';
@@ -32,6 +32,7 @@ export class AppComponent implements OnInit, OnDestroy{
   langauges = [];
   private _mobileQueryListener: () => void;
   // langauges = this.movie.languages;
+  @ViewChild('scroller', {static: false}) scrolls: ElementRef;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
               private movie: MovieService, private fb: FormBuilder,
@@ -78,8 +79,14 @@ export class AppComponent implements OnInit, OnDestroy{
     this.activetedRouterName = event;
   }
 
-  selectedMovie(event: MatAutocompleteSelectedEvent) {
-    this.router.navigate(['/popularmovies', event.option.value.id ]);
+  onSubmitMovieSearch(movie) {
+    if (movie && typeof movie !== 'string') {
+      this.router.navigate(['/popularmovies', movie.movie.id ]);
+    }
+  }
+
+  scroller(event) {
+    console.log(event);
   }
 
   ngOnDestroy(): void {

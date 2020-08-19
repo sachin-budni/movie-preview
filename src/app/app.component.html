@@ -51,7 +51,7 @@
         </div>
         <div class="routerdata">
           <div class="search-bar">
-            <form [formGroup]="searchForm" class="example-form">
+            <form [formGroup]="searchForm" (ngSubmit)="onSubmitMovieSearch(searchForm.value)" class="example-form">
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label class="lable">Search Movie</mat-label>
                 <input 
@@ -59,11 +59,15 @@
                   [matAutocomplete]="auto"
                   formControlName="movie"
                 >
+                <button mat-icon-button matSuffix (click)="onSubmitMovieSearch(searchForm.value)">
+                  <mat-icon>search</mat-icon>
+                </button>
                 <mat-autocomplete
                   #auto="matAutocomplete"
                   autoActiveFirstOption
-                  (optionSelected)="selectedMovie($event)"
                   [displayWith]="displayFn"
+                  #scroller
+                  (scroll)="scroller($event)"
                 >
                   <mat-option *ngFor="let option of filteredOptions | async" [value]="option" class="options">
                     <div class="row align-items-center">
@@ -76,6 +80,9 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
+              <!-- <div class="row justify-content-flex-end">
+                <button mat-raised-button type="submit" class="lang-sub" color="primary">Search</button>
+              </div> -->
             </form>
             <!-- <mat-form-field appearance="fill">
               <mat-label>Select Language</mat-label>

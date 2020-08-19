@@ -15,10 +15,13 @@
       Languages : <span *ngFor="let lang of movie.spoken_languages"> {{lang.name}} </span>
     </div>
     <span class="extra-space"></span>
-    <p class="rating-num">
+    <p class="languages rating-num">
       Rating: {{movie.vote_average}}
     </p>
     <img class="title-link" src="assets/star.png" alt="">
+  </div>
+  <div class="divider">
+    <mat-divider></mat-divider>
   </div>
   <div>
     <p class="overview">

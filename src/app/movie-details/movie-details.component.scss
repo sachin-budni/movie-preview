@@ -41,8 +41,11 @@
 }
 .rating-num{
     color: white;
-    font-size: 25px;
+    // font-size: 25px;
     padding: 10px;
+}
+.divider{
+    padding: 20px 0px;
 }
 
 .poster-company{
@@ -75,11 +78,12 @@
 }
 
 .videoWrapper iframe {
-	position: absolute;
+    position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
+    border-width: 0px;
 }
 
 @media screen and (max-width: 600px) {
