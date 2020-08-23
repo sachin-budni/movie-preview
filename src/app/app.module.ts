@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TrendingChartComponent } from './trending-chart/trending-chart.component';
 import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
 import {
         MatSidenavModule,
@@ -29,6 +29,7 @@ import { UpcommingComponent } from './upcomming/upcomming.component';
 import { NowPlayingComponent } from './now-playing/now-playing.component';
 import { MovieComponent } from './movie/movie.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MovieApiInterceptor } from './service/api.interceptor';
 const materialModules = [
   MatSidenavModule,
   MatToolbarModule,
@@ -63,7 +64,7 @@ const materialModules = [
     ReactiveFormsModule,
     MatSelectModule
   ],
-  providers: [MovieService],
+  providers: [MovieService, {provide: HTTP_INTERCEPTORS, useClass: MovieApiInterceptor , multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

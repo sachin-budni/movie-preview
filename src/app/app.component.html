@@ -80,26 +80,7 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <!-- <div class="row justify-content-flex-end">
-                <button mat-raised-button type="submit" class="lang-sub" color="primary">Search</button>
-              </div> -->
             </form>
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Select Language</mat-label>
-              <mat-select name="food" (selectionChange)="onSelectLanguage($event)" [(value)]="selectedFood">
-                <mat-option *ngFor="let lang of $languages | async" [value]="lang.iso_639_1">
-                  {{lang.english_name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Select Country</mat-label>
-              <mat-select name="food" (selectionChange)="onSelectLanguage($event)">
-                <mat-option *ngFor="let country of $countries | async" [value]="country.iso_3166_1">
-                  {{country.english_name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field> -->
           </div>
           <router-outlet (activate)="ActivetedRouter($event)"></router-outlet>
         </div>
