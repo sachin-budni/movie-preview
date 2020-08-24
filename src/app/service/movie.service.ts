@@ -63,7 +63,7 @@ export class MovieService {
       paramObj.with_original_language = obj.language;
       paramObj.page = obj.page;
     } else {
-      paramObj.page = obj;
+      paramObj.page = obj.page;
     }
     return paramObj;
   }
