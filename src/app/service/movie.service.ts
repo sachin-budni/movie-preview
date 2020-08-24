@@ -56,4 +56,15 @@ export class MovieService {
   searchMovieName(movie) {
     return this.http.get(`/search/movie?api_key=&language=en-US&query=${movie}&page=1&include_adult=false`);
   }
+
+  convertLanguageObj(obj) {
+    const paramObj = {} as any;
+    if (obj.language) {
+      paramObj.with_original_language = obj.language;
+      paramObj.page = obj.page;
+    } else {
+      paramObj.page = obj;
+    }
+    return paramObj;
+  }
 }

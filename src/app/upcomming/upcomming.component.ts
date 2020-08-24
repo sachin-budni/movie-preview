@@ -24,6 +24,9 @@ export class UpcommingComponent implements OnInit {
       }
     });
   }
+  nextOrPreviousPage(d) {
+    this.router.navigate(['upcommingmovies'], { queryParams: { page: d } });
+  }
   pageChange(d) {
     this.$upcommingMovies = this.movieService.getUpcommingMovies(d);
   }

@@ -10,6 +10,9 @@ export class MovieApiInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const url = req.url.replace('api_key=', this.API_KEY);
+        if (req.url.includes('.svg')) {
+            return next.handle(req);
+        }
         const request = req.clone({
             url: this.API_URL + url
         });

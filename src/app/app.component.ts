@@ -4,9 +4,12 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MovieService } from './service/movie.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatIconRegistry } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Movie } from './model/movie';
+import { ThemeService } from './theme/theme.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatSlideToggleChange } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -33,13 +36,20 @@ export class AppComponent implements OnInit, OnDestroy{
   private _mobileQueryListener: () => void;
   // langauges = this.movie.languages;
   @ViewChild('scroller', {static: false}) scrolls: ElementRef;
+  activeThem = 'dark';
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
               private movie: MovieService, private fb: FormBuilder,
-              private router: Router) {
+              private router: Router, private themeService: ThemeService,
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    // tslint:disable-next-line: deprecation
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.matIconRegistry.addSvgIcon('left_arrow', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/left_arrow.svg'));
+    this.matIconRegistry.addSvgIcon('right_arrow', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/right_arrow.svg'));
+    this.matIconRegistry.addSvgIcon('menu', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/menu.svg'));
   }
 
   ngOnInit(): void {
@@ -68,10 +78,10 @@ export class AppComponent implements OnInit, OnDestroy{
     })).subscribe((lang: any) => {
       this.movie.languages = lang;
     });
-    this.$countries = this.movie.getCountries
-    .pipe(map((lang: []) => {
-      return lang.sort((a: any, b: any) => a.english_name - b.english_name);
-    }));
+    // this.$countries = this.movie.getCountries
+    // .pipe(map((lang: []) => {
+    //   return lang.sort((a: any, b: any) => a.english_name - b.english_name);
+    // }));
   }
 
   ActivetedRouter(event) {
@@ -85,11 +95,8 @@ export class AppComponent implements OnInit, OnDestroy{
     }
   }
 
-  scroller(event) {
-    console.log(event);
-  }
-
   ngOnDestroy(): void {
+    // tslint:disable-next-line: deprecation
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
   displayLanguageFn(event) {
@@ -104,15 +111,31 @@ export class AppComponent implements OnInit, OnDestroy{
     return title;
   }
 
-  onSelectLanguage(event) {
-    console.log(event);
-  }
-
   onSubmitLanguage(value) {
     this.router.navigate(['/popularmovies'], { queryParams: { page: 1, language: value.language.iso_639_1  } });
   }
 
   getLang(lng) {
     return this.movie.languages.filter((l: any) => l.iso_639_1 === lng).map((l: any) => l.english_name);
+  }
+
+  // toggleThem(): void {
+  //   if (this.activeThem !== 'light') {
+  //     this.themeService.setActiveThem('light');
+  //     this.activeThem = 'light';
+  //   } else {
+  //     this.themeService.setActiveThem('dark');
+  //     this.activeThem = 'dark';
+  //   }
+  // }
+  changeToggle(event: MatSlideToggleChange) {
+    console.log(event.checked);
+    if (event.checked) {
+      this.themeService.setActiveThem('light');
+      this.activeThem = 'light';
+    } else {
+      this.themeService.setActiveThem('dark');
+      this.activeThem = 'dark';
+    }
   }
 }

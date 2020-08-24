@@ -30,20 +30,20 @@
   }
   .example-full-width{
     width: 100%;
-    color: white;
+    color: var(--text-color);
   }
   .options {
-    background-color: #272727;
-    color: white;
+    background-color: var(--option-bk-color);
+    color: var(--text-color);
   }
   .options:hover {
-    background-color: #353941 !important;
+    background-color:  var(--app-background) !important;
   }
   .mat-option.mat-active {
-    background-color: #353941 !important;
+    background-color:  var(--app-background) !important;
   }
   .lable{
-    color: white;
+    color: var(--text-color);
   }
   .sidenav-div{
     width: 100%;
@@ -59,30 +59,31 @@
   }
   .example-side-nav{
     width: 250px;
-    background-color: #353941;
+    background-color: var(--app-background);
     border-right: 1px solid;
     position: fixed;
   }
   .sidenav-content{
-    background-color:#353941;
+    background-color: var(--app-background);
     // position: fixed;
     // top: 0;
     // bottom: 0;
     // left: 0;
     // right: 0;
   }
-.nav-list{
-  padding: 70px 10px 0px 10px;
+.nav-div{
+  padding: 40px 10px 0px 10px;
 }
 
 .nav-list a{
-    color: white;
+    color: var(--text-color);
     margin: 10px;
     border-radius: 4px;
     width: calc(100% - 20px);
     height: 40px;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
+    font-weight: var(--movie-ft-wight);
 }
 .routerdata{
   margin: 0% auto;
@@ -91,7 +92,7 @@
   width: 100%;
 }
 .active{
-  background-color:rgba(0,0,0,0.3) !important;
+  background-color: var(--active-bk-color) !important;
 }
 .button-menu{
   position: relative;
@@ -99,7 +100,7 @@
 .example-option-img {
   vertical-align: middle;
   margin-right: 8px;
-  border: 1px solid white;
+  border: 1px solid var(--text-color);
   width: 35px;
 }
 .text-drop p{
@@ -116,7 +117,7 @@
   padding: 20px;
   p {
     font-family: "Poppins", sans-serif;
-    color: white;
+    color: var(--text-color);
     font-size: 20px;
   }
   .m-b-10{
@@ -124,5 +125,8 @@
   }
 }
 .lang-sub {
-  background-color: rgba(0, 0, 0, 0.3) !important;
+  background-color: var(--active-bk-color) !important;
+}
+.toggle{
+  color: var(--text-color);
 }

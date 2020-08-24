@@ -24,6 +24,9 @@ export class TopRatedComponent implements OnInit {
       }
     });
   }
+  nextOrPreviousPage(d) {
+    this.router.navigate(['topratedmovies'], { queryParams: { page: d } });
+  }
   pageChange(d) {
     this.$topRatedMovies = this.movieService.getTopRatedMovies(d);
   }

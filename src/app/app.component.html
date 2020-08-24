@@ -1,16 +1,21 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" appTheme>
   <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav #snav [mode]="mobileQuery.matches?'over':'side'" disableClose="true" [opened]="!mobileQuery.matches" class="example-side-nav">
       <div style="float: right" *ngIf="mobileQuery.matches">
         <button mat-icon-button (click)="snav.toggle()">
-          <img  src="assets/menu.svg" alt="menu">
+          <!-- <img  src="assets/menu.svg" alt="menu"> -->
+          <mat-icon svgIcon="menu"></mat-icon>
         </button>
       </div>
-      <mat-nav-list class="nav-list">
-        <a mat-list-item *ngFor="let nav of routerLinks" routerLinkActive="active"  routerLink="{{nav.path}}">
-            {{nav.name}}
-        </a>
-      </mat-nav-list>
+      <!-- <a class="no" (click)="toggleThem()">Change Theme!</a> -->
+      <div class="nav-div column align-items-center">
+        <mat-slide-toggle class="toggle" (change)="changeToggle($event)">Change Theme!</mat-slide-toggle>
+        <mat-nav-list class="nav-list">
+          <a mat-list-item *ngFor="let nav of routerLinks" routerLinkActive="active"  routerLink="{{nav.path}}">
+              {{nav.name}}
+          </a>
+        </mat-nav-list>
+      </div>
       <ng-container>
         <div class="filter">
           <p class="m-b-10">Filter</p>
@@ -46,7 +51,7 @@
       <div class="sidenav-div">
         <div *ngIf="mobileQuery.matches" class="button-menu">
           <button mat-icon-button (click)="snav.toggle()">
-            <img  src="assets/menu.svg" alt="menu">
+            <mat-icon svgIcon="menu"></mat-icon>
           </button>
         </div>
         <div class="routerdata">

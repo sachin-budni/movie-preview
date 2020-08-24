@@ -19,7 +19,8 @@ import {
         MatAutocompleteModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        MatSlideToggleModule
       } from '@angular/material';
 import { MovieService } from './service/movie.service';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
@@ -30,6 +31,8 @@ import { NowPlayingComponent } from './now-playing/now-playing.component';
 import { MovieComponent } from './movie/movie.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MovieApiInterceptor } from './service/api.interceptor';
+import { ThemeModule } from './theme/theme.module';
+import { ThemeService } from './theme/theme.service';
 const materialModules = [
   MatSidenavModule,
   MatToolbarModule,
@@ -39,7 +42,8 @@ const materialModules = [
   MatButtonModule,
   MatAutocompleteModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatSlideToggleModule
 ];
 @NgModule({
   declarations: [
@@ -62,9 +66,10 @@ const materialModules = [
     NgxEchartsModule,
     MatPaginatorModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    ThemeModule
   ],
-  providers: [MovieService, {provide: HTTP_INTERCEPTORS, useClass: MovieApiInterceptor , multi: true}],
+  providers: [MovieService, {provide: HTTP_INTERCEPTORS, useClass: MovieApiInterceptor , multi: true}, ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

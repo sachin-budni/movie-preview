@@ -24,15 +24,15 @@ export class PopularMoviesComponent implements OnInit {
     });
   }
 
-  pageChange(params) {
-    const paramObj = {} as any;
-    if (params.language) {
-      paramObj.with_original_language = params.language;
-      paramObj.page = params.page;
-    } else {
-      paramObj.page = params.page;
-    }
-    this.$popularMovies = this.movieService.getPopularMovies(paramObj);
+  nextOrPreviousPage(d) {
+    const param = typeof d === 'number' ? { page: d } : d;
+    this.router.navigate(['popularmovies'], { queryParams: param });
   }
+
+  pageChange(params) {
+    const Obj = this.movieService.convertLanguageObj(params);
+    this.$popularMovies = this.movieService.getPopularMovies(Obj);
+  }
+
 
 }

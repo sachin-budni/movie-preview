@@ -24,6 +24,9 @@ export class NowPlayingComponent implements OnInit {
       }
     });
   }
+  nextOrPreviousPage(d) {
+    this.router.navigate(['topratedmovies'], { queryParams: { page: d } });
+  }
   pageChange(d) {
     this.$nowPlayingMovies = this.movieService.getNowPlayingMovies(d);
   }
