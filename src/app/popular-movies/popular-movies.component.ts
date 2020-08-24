@@ -30,7 +30,7 @@ export class PopularMoviesComponent implements OnInit {
       paramObj.with_original_language = params.language;
       paramObj.page = params.page;
     } else {
-      paramObj.page = params.page;
+      paramObj.page = params;
     }
     this.$popularMovies = this.movieService.getPopularMovies(paramObj);
   }

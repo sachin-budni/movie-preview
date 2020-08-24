@@ -19,9 +19,6 @@ export class MovieComponent implements OnInit {
   ngOnInit() {
   }
 
-  getMovieDetails(id: number) {
-  }
-
   pageChange(d: number) {
     const params = this.route.snapshot.queryParams;
     const paramObj = {} as any;
