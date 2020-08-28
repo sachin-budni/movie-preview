@@ -14,7 +14,7 @@
 
     this.fetchIp =function(){
         let promise = new Promise((res,rej)=>{
-            fetch("https://jsonip.com").then(d=>d.json()).then(d=>{
+            fetch("https://ipv4.jsonip.com").then(d=>d.json()).then(d=>{
                 res(d);
             }).catch(e=>rej(e));
         })
