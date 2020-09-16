@@ -35,7 +35,7 @@
   <ng-container *ngFor="let video of movie.videos?.results">
     <div class="videoWrapper">
       <iframe class="video"
-        [src]="getVideo(video)">
+        [src]="'https://www.youtube.com/embed/'+video.key | video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
       </iframe>
     </div>
   </ng-container>

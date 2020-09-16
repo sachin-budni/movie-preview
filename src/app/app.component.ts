@@ -78,10 +78,6 @@ export class AppComponent implements OnInit, OnDestroy{
     })).subscribe((lang: any) => {
       this.movie.languages = lang;
     });
-    // this.$countries = this.movie.getCountries
-    // .pipe(map((lang: []) => {
-    //   return lang.sort((a: any, b: any) => a.english_name - b.english_name);
-    // }));
   }
 
   ActivetedRouter(event) {
@@ -119,15 +115,6 @@ export class AppComponent implements OnInit, OnDestroy{
     return this.movie.languages.filter((l: any) => l.iso_639_1 === lng).map((l: any) => l.english_name);
   }
 
-  // toggleThem(): void {
-  //   if (this.activeThem !== 'light') {
-  //     this.themeService.setActiveThem('light');
-  //     this.activeThem = 'light';
-  //   } else {
-  //     this.themeService.setActiveThem('dark');
-  //     this.activeThem = 'dark';
-  //   }
-  // }
   changeToggle(event: MatSlideToggleChange) {
     console.log(event.checked);
     if (event.checked) {

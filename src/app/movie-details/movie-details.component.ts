@@ -18,19 +18,8 @@ export class MovieDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private movie: MovieService, private domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    const tag = document.createElement('script');
-
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.body.appendChild(tag);
     this.route.params.subscribe(s => {
       this.$movieDetails = this.movie.getMovieDetails(s.id);
     });
   }
-
-  getVideo(video: any) {
-    return this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video.key);
-  }
-  // playVideo(id) {
-  //   console.log(id);
-  // }
 }

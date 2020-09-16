@@ -9,10 +9,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class MovieComponent implements OnInit {
 
-  @Input('Movies') $Movies;
-  @Input('MovieClassName') $nameOfRoute;
+  @Input('Movies') $Movies: any;
+  @Input('MovieClassName') $nameOfRoute: any;
   @Output() pages = new EventEmitter<any>();
-  // @Output() movieDetails = new EventEmitter<number>();
 
   constructor(private route: ActivatedRoute) { }
 

@@ -33,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MovieApiInterceptor } from './service/api.interceptor';
 import { ThemeModule } from './theme/theme.module';
 import { ThemeService } from './theme/theme.service';
+import { VideoPipe } from './pipes/video.pipe';
 const materialModules = [
   MatSidenavModule,
   MatToolbarModule,
@@ -56,6 +57,7 @@ const materialModules = [
     UpcommingComponent,
     NowPlayingComponent,
     MovieComponent,
+    VideoPipe,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
