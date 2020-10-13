@@ -1,0 +1,132 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    // position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-is-mobile .example-toolbar {
+    // position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  
+  h1.example-app-name {
+    margin-left: 8px;
+  }
+  
+  .example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+      //  position: fixed;
+    // flex: 1;
+  }
+  .search-bar{
+    width: calc(100% - 100px);
+    margin: 0px 50px; 
+  }
+  .example-full-width{
+    width: 100%;
+    color: var(--text-color);
+  }
+  .options {
+    background-color: var(--option-bk-color);
+    color: var(--text-color);
+  }
+  .options:hover {
+    background-color:  var(--app-background) !important;
+  }
+  .mat-option.mat-active {
+    background-color:  var(--app-background) !important;
+  }
+  .lable{
+    color: var(--text-color);
+  }
+  .sidenav-div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+  }
+  
+  .example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }
+  .example-side-nav{
+    width: 250px;
+    background-color: var(--app-background);
+    border-right: 1px solid;
+    position: fixed;
+  }
+  .sidenav-content{
+    background-color: var(--app-background);
+    // position: fixed;
+    // top: 0;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+  }
+.nav-div{
+  padding: 40px 10px 0px 10px;
+}
+
+.nav-list a{
+    color: var(--text-color);
+    margin: 10px;
+    border-radius: 4px;
+    width: calc(100% - 20px);
+    height: 40px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: var(--movie-ft-wight);
+}
+.routerdata{
+  margin: 0% auto;
+  max-width: 1300px;
+  overflow: auto;
+  width: 100%;
+}
+.active{
+  background-color: var(--active-bk-color) !important;
+}
+.button-menu{
+  position: relative;
+}
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+  border: 1px solid var(--text-color);
+  width: 35px;
+}
+.text-drop p{
+  margin: 0px;
+  padding: 0px;
+  line-height: 0px;
+  margin-top: 24px;
+}
+.rate{
+  font-size: 18px;
+  margin-right: 0px !important;
+}
+.filter {
+  padding: 20px;
+  p {
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color);
+    font-size: 20px;
+  }
+  .m-b-10{
+    margin-bottom: 10px;
+  }
+}
+.lang-sub {
+  background-color: var(--active-bk-color) !important;
+}
+.toggle{
+  color: var(--text-color);
+}
