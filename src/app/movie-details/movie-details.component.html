@@ -1,13 +1,12 @@
-
-
 <div class="main-movie" *ngIf="$movieDetails | async as movie">
   <div class="movie-title">
-      <p class="title">{{movie.title}}</p>
-    </div>
-    <span class="tag-line">{{ movie.original_title }}</span>
-    <p class="tag-line">{{movie.tagline}}</p>
-  <div class="main-poster row justify-content-center" >
-      <img class="poster poster-img" [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w500'+movie.poster_path : 'assets/no_poster.jpg'" alt="">
+    <p class="title">{{movie.title}}</p>
+  </div>
+  <span class="tag-line">{{ movie.original_title }}</span>
+  <p class="tag-line">{{movie.tagline}}</p>
+  <div class="main-poster row justify-content-center">
+    <img class="poster poster-img"
+      [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w500'+movie.poster_path : 'assets/no_poster.jpg'" alt="">
   </div>
   <div class="movie-title">
 
@@ -20,12 +19,15 @@
     </p>
     <img class="title-link" src="assets/star.png" alt="">
   </div>
+  <div class="row">
+    <button *ngFor="let genre of movie.genres" class="chip-btn">{{ genre.name }}</button>
+  </div>
   <div class="divider">
     <mat-divider></mat-divider>
   </div>
   <div>
     <p class="overview">
-        {{movie.overview}}
+      {{movie.overview}}
     </p>
   </div>
   <ng-container *ngIf="movie?.backdrop_path">
@@ -34,9 +36,13 @@
   <!-- {{$video | async | json}} -->
   <ng-container *ngFor="let video of movie.videos?.results">
     <div class="videoWrapper">
-      <iframe class="video"
-        [src]="'https://www.youtube.com/embed/'+video.key | video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+      <iframe class="video" [src]="'https://www.youtube.com/embed/'+video.key | video" frameborder="0"
+        allow="autoplay; encrypted-media" allowfullscreen>
       </iframe>
     </div>
   </ng-container>
+  <div class="movie-title">
+    <p class="title">Similar Movies</p>
+  </div>
 </div>
+<movie [Movies]="$similarMovies" (pages)="nextOrPreviousPage($event)" [MovieClassName]="routeName"></movie>

@@ -123,3 +123,21 @@
 .poster-img{
     max-width: 400px;
 }
+
+.chip-btn {
+    border: none;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: #5bc0de;
+    color: black;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.chip-btn:active {
+    color: white;
+}
+.chip-btn:focus {
+    outline: none;
+}

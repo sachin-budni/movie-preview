@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "project-75e6e"
+  },
+  "targets": {
+    "project-75e6e": {
+      "hosting": {
+        "movie": [
+          "vk-2020"
+        ]
+      }
+    }
   }
 }

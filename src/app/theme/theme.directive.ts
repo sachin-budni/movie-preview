@@ -29,8 +29,8 @@ export class ThemeDirective implements OnInit, OnDestroy {
     const theme = Theme[themeName];
     const keys = Object.keys(theme);
     keys.forEach((key: any) => {
-      element.style.setProperty(key, theme[key]);
-      this.document.body.style.setProperty(key, theme[key]);
+      element.style.setProperty(key, theme[key] as any);
+      this.document.body.style.setProperty(key, theme[key] as any);
     });
   }
 

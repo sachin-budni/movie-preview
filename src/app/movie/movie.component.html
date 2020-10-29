@@ -7,7 +7,8 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <mat-toolbar class="paginator">
+  <ng-container *ngIf="Movies.total_results !== 0">
+    <mat-toolbar class="paginator">
       <mat-toolbar-row>
         <span class="example-spacer"></span>
         <span>page</span>&nbsp;&nbsp;{{Movies.page}} of {{Movies.total_pages}}
@@ -19,4 +20,6 @@
         </button>
       </mat-toolbar-row>
     </mat-toolbar>
+  </ng-container>
+  
 </div>

@@ -88,6 +88,9 @@ export class AppComponent implements OnInit, OnDestroy {
     })).subscribe((lang: any) => {
       this.movie.languages = lang;
     });
+    // this.movie.genres.subscribe(genres => {
+    //   console.log(genres);
+    // });
   }
 
   ActivetedRouter(event): void {
