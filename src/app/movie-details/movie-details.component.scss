@@ -126,18 +126,32 @@
 
 .chip-btn {
     border: none;
-    padding: 5px;
+    padding: 5px 15px;
     border-radius: 20px;
     background-color: #5bc0de;
     color: black;
     font-size: 12px;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
-    margin-left: 5px;
+    margin: 5px;
 }
 .chip-btn:active {
     color: white;
 }
 .chip-btn:focus {
     outline: none;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.overflow-auto {
+    overflow: auto;
+}
+.cast-img{
+    width: 50px;
+    border-radius: 50%;
+    height: 60px;
+    object-fit: cover;
+    object-position: top;
+    padding: 10px 3px;
 }

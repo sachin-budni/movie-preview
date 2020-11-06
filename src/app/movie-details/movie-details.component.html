@@ -19,8 +19,17 @@
     </p>
     <img class="title-link" src="assets/star.png" alt="">
   </div>
-  <div class="row">
+  <div class="row flex-wrap">
     <button *ngFor="let genre of movie.genres" class="chip-btn">{{ genre.name }}</button>
+  </div>
+  <div class="row overflow-auto">
+    <!-- <img [src]="cast.profile_path" alt=""> -->
+    <img *ngFor="let cast of ($cast | async)?.cast"
+      class="cast-img"
+      [src]="cast.profile_path ? 'https://image.tmdb.org/t/p/w500'+cast.profile_path : 'assets/account_dp.svg'"
+      alt="cast images"
+      [matTooltip]="cast?.name"
+    >
   </div>
   <div class="divider">
     <mat-divider></mat-divider>

@@ -32,6 +32,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const materialModules = [
   MatSidenavModule,
@@ -43,7 +44,8 @@ const materialModules = [
   MatAutocompleteModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatTooltipModule
 ];
 @NgModule({
   declarations: [

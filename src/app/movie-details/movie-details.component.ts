@@ -14,18 +14,20 @@ export class MovieDetailsComponent implements OnInit {
   $movieDetails: Observable<any>;
   $video: Observable<any>;
   $similarMovies: Observable<any>;
+  $cast: Observable<any>;
   routeName = 'popularmovies';
   id = '';
   constructor(private route: ActivatedRoute, private movie: MovieService, private domSanitizer: DomSanitizer) { }
 
   ngOnInit(): any {
     this.route.params.subscribe(s => {
-      this.$movieDetails = this.movie.getMovieDetails(s.id);
-      this.$similarMovies = this.movie.similarMovies(s.id, 1);
+      this.id = s.id;
+      this.$movieDetails = this.movie.getMovieDetails(this.id);
+      this.$similarMovies = this.movie.similarMovies(this.id, 1);
       const path = window.location.pathname;
       const f2 = path.indexOf('/', 1);
       this.routeName = path.substr(1, f2 - 1);
-      this.id = s.id;
+      this.$cast = this.movie.getMovieCast(this.id);
     });
   }
   nextOrPreviousPage(e): void {

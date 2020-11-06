@@ -37,6 +37,10 @@ export class MovieService {
     return this.http.get(`/movie/${id}?api_key=&language=en-US&append_to_response=videos`);
   }
 
+  getMovieCast(id): any {
+    return this.http.get(`/movie/${id}/credits?api_key=`);
+  }
+
   getTopRatedMovies(index): any {
     return this.http.get(`/movie/top_rated?api_key=&language=en-US&page=${index}`);
   }
