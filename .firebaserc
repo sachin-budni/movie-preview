@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "project-75e6e"
+    "default": "allfire-fb40c"
   },
   "targets": {
-    "project-75e6e": {
+    "allfire-fb40c": {
       "hosting": {
         "movie": [
-          "vk-2020"
+          "tamilrockersmovies"
         ]
       }
     }

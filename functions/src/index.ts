@@ -10,3 +10,9 @@ import * as functions from 'firebase-functions';
 
 const universal = require('./../dist/movie/server/main.js').app;
 export const universalapp = functions.https.onRequest(universal);
+// tslint:disable-next-line: no-empty
+// export const shiva = functions.https.onRequest((req, res) => {
+//     res.send({
+//         jso:"sdasd"
+//     })
+// });

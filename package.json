@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node dist/movie/server/main.js",
+    "serve": "ng serve",
+    "build": "ng build --prod && ng run movie:server:production",
+    "build:local": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
