@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MovieService } from '../service/movie.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IMovieDetails } from '../model/movie.d';
+import { ILocalParams, RouterNames } from '../model/models';
 
 @Component({
   selector: 'app-top-rated',
@@ -10,24 +12,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TopRatedComponent implements OnInit {
 
-  routeName = 'topratedmovies';
-  $topRatedMovies: Observable<any>;
+  routeName: RouterNames = 'topratedmovies';
+  $topRatedMovies: Observable<IMovieDetails>;
 
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params: ILocalParams) => {
       if (params.page) {
         this.pageChange(params.page);
       } else {
-        this.router.navigate(['topratedmovies'], { queryParams: { page: 1 } });
+        this.router.navigate([this.routeName], { queryParams: { page: 1 } });
       }
     });
   }
-  nextOrPreviousPage(d) {
-    this.router.navigate(['topratedmovies'], { queryParams: { page: d } });
+  nextOrPreviousPage(d: number): void {
+    this.router.navigate([this.routeName], { queryParams: { page: d } });
   }
-  pageChange(d) {
+  pageChange(d: number): void {
     this.$topRatedMovies = this.movieService.getTopRatedMovies(d);
   }
 

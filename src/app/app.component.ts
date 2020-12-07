@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { ILanguage, Language } from './model/models';
 import { MovieService } from './service/movie.service';
 import { ThemeService } from './theme/theme.service';
 
@@ -83,14 +84,18 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
     this.movie.getLanguages
-    .pipe(map((lang: []) => {
-      return lang.sort((a: any, b: any) => a.english_name - b.english_name);
-    })).subscribe((lang: any) => {
+    .pipe(map((lang: Language[]) => {
+      const lists = lang.map((d: Language) => {
+        const emp = new Language();
+        emp.english_name = d.english_name;
+        emp.iso_639_1 = d.iso_639_1;
+        emp.name = d.name;
+        return emp;
+      });
+      return lists.sort((a: Language, b: Language) => a.english_name.localeCompare(b.english_name));
+    })).subscribe((lang: ILanguage[]) => {
       this.movie.languages = lang;
     });
-    // this.movie.genres.subscribe(genres => {
-    //   console.log(genres);
-    // });
   }
 
   ActivetedRouter(event): void {

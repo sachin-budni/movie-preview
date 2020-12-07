@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
+import { IMovieDetails } from '../model/movie.d';
+import { ILanguage, ILocalParams } from '../model/models';
 
 @Injectable()
 export class MovieService {
-  languages: [];
+  languages: ILanguage[];
   constructor(private http: HttpClient) { }
 
-  get getLanguages(): Observable<any> {
-    return this.http.get(`/configuration/languages?api_key=`);
+  get getLanguages(): Observable<ILanguage[]> {
+    return this.http.get<ILanguage[]>(`/configuration/languages?api_key=`);
   }
 
   get getCountries(): any {
@@ -19,14 +21,14 @@ export class MovieService {
     return this.http.get(`/movie/${id}/videos?api_key=`);
   }
 
-  getPopularMovies(params): Observable<any> {
+  getPopularMovies(params): Observable<IMovieDetails> {
     let api = '';
     if (params.with_original_language) {
       api = `/movie/popular?api_key=&language=en-US&page=${params.page}&with_original_language=${params.with_original_language}`;
     } else {
       api = `/movie/popular?api_key=&language=en-US&page=${params.page}`;
     }
-    return this.http.get(api);
+    return this.http.get<IMovieDetails>(api);
   }
 
   getTrendingCharts(): any {
@@ -41,27 +43,27 @@ export class MovieService {
     return this.http.get(`/movie/${id}/credits?api_key=`);
   }
 
-  getTopRatedMovies(index): any {
-    return this.http.get(`/movie/top_rated?api_key=&language=en-US&page=${index}`);
+  getTopRatedMovies(index): Observable<IMovieDetails> {
+    return this.http.get<IMovieDetails>(`/movie/top_rated?api_key=&language=en-US&page=${index}`);
   }
 
-  getUpcommingMovies(index): any {
-    return this.http.get(`/movie/upcoming?api_key=&language=en-US&page=${index}`);
+  getUpcommingMovies(index): Observable<IMovieDetails> {
+    return this.http.get<IMovieDetails>(`/movie/upcoming?api_key=&language=en-US&page=${index}`);
   }
 
   getLatestMovies(): any {
     return this.http.get(`/movie/latest?api_key=&language=en-US`);
   }
 
-  getNowPlayingMovies(index): any {
-    return this.http.get(`/movie/now_playing?api_key=&language=en-US&page=${index}`);
+  getNowPlayingMovies(index): Observable<IMovieDetails> {
+    return this.http.get<IMovieDetails>(`/movie/now_playing?api_key=&language=en-US&page=${index}`);
   }
 
-  searchMovieName(movie): any {
-    return this.http.get(`/search/movie?api_key=&language=en-US&query=${movie}&page=1&include_adult=false`);
+  searchMovieName(movie): Observable<IMovieDetails> {
+    return this.http.get<IMovieDetails>(`/search/movie?api_key=&language=en-US&query=${movie}&page=1&include_adult=false`);
   }
 
-  convertLanguageObj(obj): any {
+  convertLanguageObj(obj: ILocalParams): ILocalParams {
     const paramObj = {} as any;
     if (obj.language) {
       paramObj.with_original_language = obj.language;
@@ -73,11 +75,10 @@ export class MovieService {
   }
 
   get genres(): Observable<any> {
-    // return this.http.get('/genre/movie/list?api_key=&language=en-US')
     return this.http.get('/movie/{585244}/similar');
   }
 
-  similarMovies(id, page): Observable<any> {
-    return this.http.get(`/movie/${id}/similar?page=${page}&api_key=&language=en-US`);
+  similarMovies(id, page): Observable<IMovieDetails> {
+    return this.http.get<IMovieDetails>(`/movie/${id}/similar?page=${page}&api_key=&language=en-US`);
   }
 }

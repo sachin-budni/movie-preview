@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MovieService } from '../service/movie.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ILocalParams, RouterNames } from '../model/models';
+import { IMovieDetails } from '../model/movie.d';
 
 @Component({
   selector: 'app-upcomming',
@@ -10,24 +12,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UpcommingComponent implements OnInit {
 
-  routeName = 'upcommingmovies';
-  $upcommingMovies: Observable<any>;
+  routeName: RouterNames = 'upcommingmovies';
+  $upcommingMovies: Observable<IMovieDetails>;
 
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params: ILocalParams) => {
       if (params.page) {
         this.pageChange(params.page);
       } else {
-        this.router.navigate(['upcommingmovies'], { queryParams: { page: 1 } });
+        this.router.navigate([this.routeName], { queryParams: { page: 1 } });
       }
     });
   }
-  nextOrPreviousPage(d) {
-    this.router.navigate(['upcommingmovies'], { queryParams: { page: d } });
+  nextOrPreviousPage(d): void {
+    this.router.navigate([this.routeName], { queryParams: { page: d } });
   }
-  pageChange(d) {
+  pageChange(d): void {
     this.$upcommingMovies = this.movieService.getUpcommingMovies(d);
   }
 
