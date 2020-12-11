@@ -33,6 +33,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const materialModules = [
   MatSidenavModule,
@@ -71,6 +73,7 @@ const materialModules = [
     HttpClientModule,
     NgxEchartsModule,
     MatPaginatorModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [MovieService, { provide: HTTP_INTERCEPTORS, useClass: MovieApiInterceptor, multi: true }, ThemeService],
   bootstrap: [AppComponent]

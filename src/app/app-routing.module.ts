@@ -10,7 +10,7 @@ import { UpcommingComponent } from './upcomming/upcomming.component';
 
 
 const routes: Routes = [
-  {path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
   { path: 'trendingchart', component: TrendingChartComponent },
   { path: 'popularmovies', component: PopularMoviesComponent },
   { path: 'latestmovies', component: LatestMoviesComponent },
