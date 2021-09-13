@@ -20,7 +20,7 @@ import { VideoPipe } from './pipes/video.pipe';
 import { TrendingChartComponent } from './trending-chart/trending-chart.component';
 import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgxEchartsModule } from 'ngx-echarts';
+// import { NgxEchartsModule } from 'ngx-echarts';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -35,6 +35,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PopularTvShowComponent } from './popular-tv-show/popular-tv-show.component';
 
 const materialModules = [
   MatSidenavModule,
@@ -61,6 +62,7 @@ const materialModules = [
     NowPlayingComponent,
     MovieComponent,
     VideoPipe,
+    PopularTvShowComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -71,7 +73,7 @@ const materialModules = [
     ThemeModule,
     materialModules,
     HttpClientModule,
-    NgxEchartsModule,
+    // NgxEchartsModule,
     MatPaginatorModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],

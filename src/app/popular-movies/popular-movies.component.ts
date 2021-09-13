@@ -16,6 +16,7 @@ export class PopularMoviesComponent implements OnInit {
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): any {
+    this.routeName = ((this.route.data as any).getValue()?.title) as RouterNames;
     this.route.queryParams.subscribe((params: ILocalParams) => {
       if (params.page || params.language) {
         this.pageChange(params);
@@ -32,6 +33,17 @@ export class PopularMoviesComponent implements OnInit {
 
   pageChange(params: ILocalParams): any {
     const Obj = this.movieService.convertLanguageObj(params);
-    this.$popularMovies = this.movieService.getPopularMovies(Obj);
+    this.switchMovieList(Obj);
+    // this.$popularMovies = this.movieService.getPopularMovies(Obj);
+  }
+  switchMovieList(Obj: any): void {
+    switch (this.routeName) {
+      case 'upcommingmovies':
+        this.$popularMovies = this.movieService.getUpcommingMovies(Obj);
+        break;
+      default:
+        this.$popularMovies = this.movieService.getPopularMovies(Obj);
+        break;
+    }
   }
 }

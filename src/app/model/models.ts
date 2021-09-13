@@ -1,4 +1,5 @@
-export type RouterNames = 'topratedmovies' | 'upcommingmovies' | 'trendingchart' | 'nowplayingmovies' | 'popularmovies' | 'popularmovies';
+export type RouterNames = 'topratedmovies' | 'upcommingmovies' | 'trendingchart' | 'nowplayingmovies' | 'popularmovies' | 'popularmovies' |
+'popular-tv-shows';
 export class LocalParams implements ILocalParams {
     page: number;
     language: string;

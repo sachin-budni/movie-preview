@@ -14,6 +14,7 @@ export class MovieDetailsComponent implements OnInit {
   $movieDetails: Observable<any>;
   $video: Observable<any>;
   $similarMovies: Observable<any>;
+  $movieReview: Observable<any>;
   $cast: Observable<any>;
   routeName = 'popularmovies';
   id = '';
@@ -24,6 +25,7 @@ export class MovieDetailsComponent implements OnInit {
       this.id = s.id;
       this.$movieDetails = this.movie.getMovieDetails(this.id);
       this.$similarMovies = this.movie.similarMovies(this.id, 1);
+      this.$movieReview = this.movie.moviesReviews(this.id, 1);
       const path = window.location.pathname;
       const f2 = path.indexOf('/', 1);
       this.routeName = path.substr(1, f2 - 1);

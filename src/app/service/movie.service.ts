@@ -30,6 +30,16 @@ export class MovieService {
     }
     return this.http.get<IMovieDetails>(api);
   }
+  getPopularTvShows(params): Observable<IMovieDetails> {
+    let api = '';
+    if (params.with_original_language) {
+      // https://api.themoviedb.org/3/tv/popular?api_key=<<api_key>>&language=en-US&page=1
+      api = `/tv/popular?api_key=&language=en-US&page=${params.page}&with_original_language=${params.with_original_language}`;
+    } else {
+      api = `/tv/popular?api_key=&language=en-US&page=${params.page}`;
+    }
+    return this.http.get<IMovieDetails>(api);
+  }
 
   getTrendingCharts(): any {
     return this.http.get(`/trending/all/day?api_key=`);
@@ -80,5 +90,8 @@ export class MovieService {
 
   similarMovies(id, page): Observable<IMovieDetails> {
     return this.http.get<IMovieDetails>(`/movie/${id}/similar?page=${page}&api_key=&language=en-US`);
+  }
+  moviesReviews(id, page): Observable<any> {
+    return this.http.get<IMovieDetails>(`/movie/${id}/reviews?api_key=&page=${page}&language=en-US`);
   }
 }
