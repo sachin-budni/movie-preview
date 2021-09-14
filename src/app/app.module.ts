@@ -6,21 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MovieService } from './service/movie.service';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { LatestMoviesComponent } from './latest-movies/latest-movies.component';
-import { TopRatedComponent } from './top-rated/top-rated.component';
-import { UpcommingComponent } from './upcomming/upcomming.component';
-import { NowPlayingComponent } from './now-playing/now-playing.component';
-import { MovieComponent } from './movie/movie.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MovieApiInterceptor } from './service/api.interceptor';
 import { ThemeModule } from './theme/theme.module';
 import { ThemeService } from './theme/theme.service';
-import { VideoPipe } from './pipes/video.pipe';
-import { TrendingChartComponent } from './trending-chart/trending-chart.component';
-import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { NgxEchartsModule } from 'ngx-echarts';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -31,11 +21,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { PopularTvShowComponent } from './popular-tv-show/popular-tv-show.component';
 
 const materialModules = [
   MatSidenavModule,
@@ -48,21 +38,12 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   MatSlideToggleModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatExpansionModule
 ];
 @NgModule({
   declarations: [
-    AppComponent,
-    TrendingChartComponent,
-    PopularMoviesComponent,
-    MovieDetailsComponent,
-    LatestMoviesComponent,
-    TopRatedComponent,
-    UpcommingComponent,
-    NowPlayingComponent,
-    MovieComponent,
-    VideoPipe,
-    PopularTvShowComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -73,7 +54,6 @@ const materialModules = [
     ThemeModule,
     materialModules,
     HttpClientModule,
-    // NgxEchartsModule,
     MatPaginatorModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],

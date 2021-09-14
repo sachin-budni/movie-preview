@@ -21,13 +21,21 @@ import { ThemeService } from './theme/theme.service';
 export class AppComponent implements OnInit, OnDestroy {
   activetedRouterName: any;
   URL = environment.URL;
-  routerLinks = [
+  movieLinks = [
     { path: 'trendingchart', name: 'Trending Charts' },
-    { path: 'popularmovies', name: 'Popular Movies' },
-    { path: 'latestmovies', name: 'Latest Movies' },
-    { path: 'upcommingmovies', name: 'Upcomming Movies' },
-    { path: 'topratedmovies', name: 'Top-Rated Movies' },
-    { path: 'nowplayingmovies', name: 'Now-Playing Movies' },
+    { path: 'popular', name: 'Popular' },
+    { path: 'latest', name: 'Latest' },
+    { path: 'upcoming', name: 'Upcoming' },
+    { path: 'top-rated', name: 'Top-Rated' },
+    { path: 'now-playing', name: 'Now-Playing' },
+  ];
+  tvLinks = [
+    // { path: 'trendingchart', name: 'Trending Charts' },
+    { path: 'popular', name: 'Popular' },
+    // { path: 'latest', name: 'Latest' },
+    { path: 'upcoming', name: 'Upcoming' },
+    { path: 'top-rated', name: 'Top-Rated' },
+    { path: 'now-playing', name: 'Now-Playing' },
   ];
   selectedFood: any;
   searchForm: FormGroup;

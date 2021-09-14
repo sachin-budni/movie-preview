@@ -3,19 +3,44 @@
     <mat-sidenav #snav [mode]="mobileQuery.matches?'over':'side'" disableClose="true" [opened]="!mobileQuery.matches" class="example-side-nav">
       <div style="float: right" *ngIf="mobileQuery.matches">
         <button mat-icon-button (click)="snav.toggle()">
-          <!-- <img  src="assets/menu.svg" alt="menu"> -->
           <mat-icon svgIcon="menu"></mat-icon>
         </button>
       </div>
-      <!-- <a class="no" (click)="toggleThem()">Change Theme!</a> -->
       <div class="nav-div column align-items-center">
         <mat-slide-toggle class="toggle" (change)="changeToggle($event)">Change Theme!</mat-slide-toggle>
-        <mat-nav-list class="nav-list">
+        <!-- <mat-nav-list class="nav-list">
           <a mat-list-item *ngFor="let nav of routerLinks" routerLinkActive="active"  routerLink="{{nav.path}}">
               {{nav.name}}
           </a>
-        </mat-nav-list>
+        </mat-nav-list> -->
+        <!-- <mat-accordion> -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Movie
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list class="nav-list">
+              <a mat-list-item *ngFor="let nav of movieLinks" routerLinkActive="active"  routerLink="/movie/{{nav.path}}">
+                  {{nav.name}}
+              </a>
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                TV-Shows
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list class="nav-list">
+              <a mat-list-item *ngFor="let nav of tvLinks" routerLinkActive="active"  routerLink="/tv/{{nav.path}}">
+                  {{nav.name}}
+              </a>
+            </mat-nav-list>
+          </mat-expansion-panel>
+        <!-- </mat-accordion> -->
       </div>
+      <mat-divider></mat-divider>
       <ng-container>
         <div class="filter">
           <p class="m-b-10">Filter</p>

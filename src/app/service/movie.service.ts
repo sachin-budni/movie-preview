@@ -21,22 +21,13 @@ export class MovieService {
     return this.http.get(`/movie/${id}/videos?api_key=`);
   }
 
-  getPopularMovies(params): Observable<IMovieDetails> {
-    let api = '';
-    if (params.with_original_language) {
-      api = `/movie/popular?api_key=&language=en-US&page=${params.page}&with_original_language=${params.with_original_language}`;
-    } else {
-      api = `/movie/popular?api_key=&language=en-US&page=${params.page}`;
-    }
-    return this.http.get<IMovieDetails>(api);
-  }
-  getPopularTvShows(params): Observable<IMovieDetails> {
+  getList(type, routerName, params): Observable<IMovieDetails> {
     let api = '';
     if (params.with_original_language) {
       // https://api.themoviedb.org/3/tv/popular?api_key=<<api_key>>&language=en-US&page=1
-      api = `/tv/popular?api_key=&language=en-US&page=${params.page}&with_original_language=${params.with_original_language}`;
+      api = `/${type}/${routerName}?api_key=&language=en-US&page=${params.page}&with_original_language=${params.with_original_language}`;
     } else {
-      api = `/tv/popular?api_key=&language=en-US&page=${params.page}`;
+      api = `/${type}/${routerName}?api_key=&language=en-US&page=${params.page}`;
     }
     return this.http.get<IMovieDetails>(api);
   }
@@ -53,20 +44,8 @@ export class MovieService {
     return this.http.get(`/movie/${id}/credits?api_key=`);
   }
 
-  getTopRatedMovies(index): Observable<IMovieDetails> {
-    return this.http.get<IMovieDetails>(`/movie/top_rated?api_key=&language=en-US&page=${index}`);
-  }
-
-  getUpcommingMovies(index): Observable<IMovieDetails> {
-    return this.http.get<IMovieDetails>(`/movie/upcoming?api_key=&language=en-US&page=${index}`);
-  }
-
   getLatestMovies(): any {
     return this.http.get(`/movie/latest?api_key=&language=en-US`);
-  }
-
-  getNowPlayingMovies(index): Observable<IMovieDetails> {
-    return this.http.get<IMovieDetails>(`/movie/now_playing?api_key=&language=en-US&page=${index}`);
   }
 
   searchMovieName(movie): Observable<IMovieDetails> {
