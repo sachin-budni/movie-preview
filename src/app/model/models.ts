@@ -1,4 +1,5 @@
 export type RouterNames = 'top-rated' | 'upcoming' | 'trendingchart' | 'now-playing' | 'popular' | 'latest';
+export type Type = 'movie' | 'tv';
 export class LocalParams implements ILocalParams {
     page: number;
     language: string;

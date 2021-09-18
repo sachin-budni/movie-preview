@@ -16,6 +16,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DetailsComponent } from './details/details.component';
+import { LatestComponent } from './latest/latest.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 const MATERIAL_MODULE = [
   MatSidenavModule,
   MatToolbarModule,
@@ -28,12 +30,13 @@ const MATERIAL_MODULE = [
   MatInputModule,
   MatSlideToggleModule,
   MatTooltipModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatProgressSpinnerModule
 ];
 
 
 @NgModule({
-  declarations: [TvListComponent, TvComponent, DetailsComponent],
+  declarations: [TvListComponent, TvComponent, DetailsComponent, LatestComponent],
   imports: [
     CommonModule,
     TvRoutingModule,

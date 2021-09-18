@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tv',
@@ -13,7 +13,7 @@ export class TvComponent implements OnInit {
   @Input('MovieClassName') $nameOfRoute: any;
   @Output() pages = new EventEmitter<any>();
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): any {
   }

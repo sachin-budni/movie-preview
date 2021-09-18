@@ -3,6 +3,7 @@ import { ActivatedRoute} from '@angular/router';
 import { MovieService } from '../../../service/movie.service';
 import { Observable } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Type } from 'src/app/model/models';
 
 @Component({
   selector: 'app-movie-details',
@@ -16,15 +17,16 @@ export class MovieDetailsComponent implements OnInit {
   $similarMovies: Observable<any>;
   $movieReview: Observable<any>;
   $cast: Observable<any>;
-  routeName = 'popularmovies';
+  routeName = 'popular';
+  type: Type = 'movie';
   id = '';
   constructor(private route: ActivatedRoute, private movie: MovieService, private domSanitizer: DomSanitizer) { }
 
   ngOnInit(): any {
     this.route.params.subscribe(s => {
       this.id = s.id;
-      this.$movieDetails = this.movie.getMovieDetails(this.id);
-      this.$similarMovies = this.movie.similarMovies(this.id, 1);
+      this.$movieDetails = this.movie.getDetails(this.id, this.type);
+      this.$similarMovies = this.movie.similar(this.id, 1, this.type);
       this.$movieReview = this.movie.moviesReviews(this.id, 1);
       const path = window.location.pathname;
       const f2 = path.indexOf('/', 1);
@@ -33,6 +35,6 @@ export class MovieDetailsComponent implements OnInit {
     });
   }
   nextOrPreviousPage(e): void {
-    this.$similarMovies = this.movie.similarMovies(this.id, e);
+    this.$similarMovies = this.movie.similar(this.id, e, this.type);
   }
 }

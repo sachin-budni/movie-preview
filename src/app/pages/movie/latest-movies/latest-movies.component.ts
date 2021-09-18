@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RouterNames } from 'src/app/model/models';
+import { RouterNames, Type } from 'src/app/model/models';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
@@ -11,13 +11,13 @@ import { MovieService } from 'src/app/service/movie.service';
 export class LatestMoviesComponent implements OnInit {
   routeName: RouterNames = 'popular';
   $latestMovies: Observable<any>;
-
+  type: Type = 'movie';
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
     this.pageChange();
   }
   pageChange(): void {
-    this.$latestMovies = this.movieService.getLatestMovies();
+    this.$latestMovies = this.movieService.getLatest(this.type);
   }
 }

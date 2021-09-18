@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
   tvLinks = [
     // { path: 'trendingchart', name: 'Trending Charts' },
     { path: 'popular', name: 'Popular' },
-    // { path: 'latest', name: 'Latest' },
+    { path: 'latest', name: 'Latest' },
     { path: 'upcoming', name: 'Upcoming' },
     { path: 'top-rated', name: 'Top-Rated' },
     { path: 'now-playing', name: 'Now-Playing' },

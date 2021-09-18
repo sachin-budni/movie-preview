@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 import { IMovieDetails } from '../model/movie.d';
-import { ILanguage, ILocalParams } from '../model/models';
+import { ILanguage, ILocalParams, Type } from '../model/models';
 
 @Injectable()
 export class MovieService {
@@ -36,16 +36,16 @@ export class MovieService {
     return this.http.get(`/trending/all/day?api_key=`);
   }
 
-  getMovieDetails(id): any {
-    return this.http.get(`/movie/${id}?api_key=&language=en-US&append_to_response=videos`);
+  getDetails(id, type: Type): any {
+    return this.http.get(`/${type}/${id}?api_key=&language=en-US&append_to_response=videos`);
   }
 
   getMovieCast(id): any {
     return this.http.get(`/movie/${id}/credits?api_key=`);
   }
 
-  getLatestMovies(): any {
-    return this.http.get(`/movie/latest?api_key=&language=en-US`);
+  getLatest(type: Type): any {
+    return this.http.get(`/${type}/latest?api_key=&language=en-US`);
   }
 
   searchMovieName(movie): Observable<IMovieDetails> {
@@ -67,8 +67,8 @@ export class MovieService {
     return this.http.get('/movie/{585244}/similar');
   }
 
-  similarMovies(id, page): Observable<IMovieDetails> {
-    return this.http.get<IMovieDetails>(`/movie/${id}/similar?page=${page}&api_key=&language=en-US`);
+  similar(id, page, type): Observable<IMovieDetails> {
+    return this.http.get<IMovieDetails>(`/${type}/${id}/similar?page=${page}&api_key=&language=en-US`);
   }
   moviesReviews(id, page): Observable<any> {
     return this.http.get<IMovieDetails>(`/movie/${id}/reviews?api_key=&page=${page}&language=en-US`);
