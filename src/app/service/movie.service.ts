@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Injectable()
 export class MovieService {
   languages: [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private title: Title) { }
 
   get getLanguages() {
     return this.http.get(`/configuration/languages?api_key=`);
@@ -55,5 +56,8 @@ export class MovieService {
 
   searchMovieName(movie) {
     return this.http.get(`/search/movie?api_key=&language=en-US&query=${movie}&page=1&include_adult=false`);
+  }
+  setTitle(name: string) {
+    this.title.setTitle(name);
   }
 }

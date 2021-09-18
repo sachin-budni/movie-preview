@@ -17,6 +17,7 @@ export class TrendingChartComponent implements OnInit {
   
   constructor(private movieService:MovieService) { }
   ngOnInit() {
+    this.movieService.setTitle('Trending Chart');
     if(this.rating.length == 0)
     this.movieService.getTrendingCharts().subscribe(data=>{
       data['results'].filter(data=>this.rating.push(data.vote_average));

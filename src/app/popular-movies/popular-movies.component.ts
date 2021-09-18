@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MovieService } from '../service/movie.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-popular-movies',
@@ -12,9 +13,12 @@ export class PopularMoviesComponent implements OnInit {
   routeName = 'popularmovies';
   $popularMovies: Observable<any>;
 
-  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private movieService: MovieService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+    this.movieService.setTitle('Popular Movies');
     this.route.queryParams.subscribe(params => {
       if (params.page || params.language) {
         this.pageChange(params);
