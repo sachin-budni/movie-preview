@@ -20,7 +20,15 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(s => {
       this.$movieDetails = this.movie.getMovieDetails(s.id);
+      this.setTitle(s.id);
     });
+  }
+
+  async setTitle(id) {
+    const result: any = await this.movie.getMovieDetails(id).toPromise();
+    const title = result.title;
+    console.log(title);
+    this.movie.setTitle(title);
   }
 
   getVideo(video: any) {
