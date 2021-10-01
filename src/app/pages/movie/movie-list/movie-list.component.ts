@@ -15,10 +15,12 @@ export class MovieListComponent implements OnInit {
   routeName: RouterNames = 'popular';
   $movieList: Observable<IMovieDetails>;
 
-  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { 
+  }
 
   ngOnInit(): any {
-    this.routeName = ((this.route.data as any).getValue()?.title) as RouterNames;
+    this.routeName = ((this.route.data as any).getValue().title) as RouterNames;
+    this.movieService.setTitle(this.routeName);
     this.route.queryParams.subscribe((params: ILocalParams) => {
       if (params.page || params.language) {
         this.pageChange(params);

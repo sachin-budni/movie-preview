@@ -3,7 +3,13 @@
         <div class="poster-section">
             <img [src]="tv.poster_path ? 'https://image.tmdb.org/t/p/w500'+tv.poster_path : 'assets/no_poster.jpg'" alt="">
             <div class="row justify-content-center network">
-                <img *ngIf="tv.networks.length !== 0" [src]="'https://image.tmdb.org/t/p/w500'+tv.networks[0].logo_path" alt="">
+                <div class="row align-items-center">
+                    <img *ngIf="tv.networks.length !== 0" [src]="'https://image.tmdb.org/t/p/w500'+tv.networks[0].logo_path" alt="">
+                </div>
+                <div class="watch-line">
+                    <p>Now Streaming</p>
+                    <b>Watch Now</b>
+                </div>
             </div>
         </div>
         <div class="tv-details">

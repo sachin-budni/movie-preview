@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 import { IMovieDetails } from '../model/movie.d';
 import { ILanguage, ILocalParams, Type } from '../model/models';
+import { Title } from '@angular/platform-browser';
 
 @Injectable()
 export class MovieService {
   languages: ILanguage[];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private title: Title) { }
 
   get getLanguages(): Observable<ILanguage[]> {
     return this.http.get<ILanguage[]>(`/configuration/languages?api_key=`);
@@ -72,5 +73,9 @@ export class MovieService {
   }
   moviesReviews(id, page): Observable<any> {
     return this.http.get<IMovieDetails>(`/movie/${id}/reviews?api_key=&page=${page}&language=en-US`);
+  }
+
+  setTitle(name): void {
+    this.title.setTitle(name);
   }
 }
