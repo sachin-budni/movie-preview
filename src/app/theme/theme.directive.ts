@@ -12,7 +12,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
   private themeName = 'dark';
   private themServiceSubscription: Subscription;
   constructor(private elementRef: ElementRef,
-              @Inject(DOCUMENT) private document: any,
+              @Inject(DOCUMENT) private document: Document,
               private themService: ThemeService) { }
 
   ngOnInit(): void {
@@ -28,10 +28,12 @@ export class ThemeDirective implements OnInit, OnDestroy {
     const element = this.elementRef.nativeElement;
     const theme = Theme[themeName];
     const keys = Object.keys(theme);
-    keys.forEach((key: any) => {
-      element.style.setProperty(key as string, theme[key] as any);
-      this.document.body.style.setProperty(key  as string, theme[key] as any);
-    });
+    // keys.forEach((key: any) => {
+    //   if (key && theme[key]) {
+    //     (element.style as CSSStyleDeclaration).setProperty(key, theme[key]);
+    //     (this.document.body.style as CSSStyleDeclaration).setProperty(key, theme[key]);
+    //   }
+    // });
   }
 
   ngOnDestroy(): void {
