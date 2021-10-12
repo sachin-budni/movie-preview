@@ -18,7 +18,8 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): any {
     this.routeName = ((this.route.data as any).getValue().title) as any;
-    this.movieService.setTitle(this.routeName);
+    const name = ((this.route.data as any).getValue().name) as any;
+    this.movieService.setTitle(name);
     this.route.queryParams.subscribe((params: any) => {
       if (params.page || params.language) {
         this.pageChange(params);

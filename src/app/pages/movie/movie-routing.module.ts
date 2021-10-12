@@ -8,12 +8,12 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieLayoutComponent } from './movie-layout/movie-layout.component';
 const routes: Routes = [
   { path: 'movie', component: MovieLayoutComponent, children: [
-      { path: 'trendingchart', component: TrendingChartComponent, data: { title: 'trendingchart' } },
-      { path: 'popular', component: MovieListComponent, data: { title: 'popular' } },
-      { path: 'upcoming', component: MovieListComponent, data: { title: 'upcoming' } },
-      { path: 'latest', component: LatestMoviesComponent, data: { title: 'latest' } },
-      { path: 'top-rated', component: MovieListComponent, data: { title: 'top-rated' } },
-      { path: 'now-playing', component: MovieListComponent, data: { title: 'now-playing' } },
+      { path: 'trendingchart', component: TrendingChartComponent, data: { title: 'trendingchart', name: 'Trending Chart of Movie' } },
+      { path: 'popular', component: MovieListComponent, data: { title: 'popular', name: 'Popular Movies' } },
+      { path: 'upcoming', component: MovieListComponent, data: { title: 'upcoming', name: 'Upcoming Movies' } },
+      { path: 'latest', component: LatestMoviesComponent, data: { title: 'latest', name: 'Latest Movies' } },
+      { path: 'top-rated', component: MovieListComponent, data: { title: 'top-rated', name: 'Top-rated Movies' } },
+      { path: 'now-playing', component: MovieListComponent, data: { title: 'now-playing', name: 'Now-playing Movies' } },
       { path: 'popular/:id', component: MovieDetailsComponent },
       { path: 'upcoming/:id', component: MovieDetailsComponent },
       { path: 'top-rated/:id', component: MovieDetailsComponent },

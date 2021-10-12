@@ -37,7 +37,6 @@ export class MovieDetailsComponent implements OnInit {
 
   async setTitle(): Promise<void> {
     const result = await this.movie.getDetails(this.id, this.type).toPromise();
-    console.log(result);
     this.movie.setTitle(result.title);
   }
   nextOrPreviousPage(e: any): void {

@@ -34,13 +34,17 @@ export class DetailsComponent implements OnInit {
       const f2 = path.substr(f1).lastIndexOf('/');
       this.routeName = path.substr(f1 + 1, f2 - 1);
       this.$cast = this.movie.getMovieCast(this.id);
+      this.setTitle();
     });
+  }
+  async setTitle(): Promise<void> {
+    const result = await this.movie.getDetails(this.id, this.type).toPromise();
+    this.movie.setTitle(result.title);
   }
   nextOrPreviousPage(e: any): void {
     this.$similarTV = this.movie.similar(this.id, e, this.type);
   }
   playTrailer(video: any): void {
-    console.log(video);
     let dialogRef = this.dialog.open(VideoComponent, {
       width: '800px',
       data: {video},

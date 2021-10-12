@@ -17,6 +17,8 @@ export class TvListComponent implements OnInit {
 
   ngOnInit(): any {
     this.routeName = ((this.route.data as any).getValue()?.title) as any;
+    const name = ((this.route.data as any).getValue()?.name) as any;
+    this.movieService.setTitle(name);
     this.route.queryParams.subscribe((params: any) => {
       if (params.page || params.language) {
         this.pageChange(params);

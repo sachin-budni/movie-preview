@@ -5,11 +5,11 @@ import { TvListComponent } from './tv-list/tv-list.component';
 import { LatestComponent } from './latest/latest.component';
 import { DetailsComponent } from './details/details.component';
 const routes: Routes = [
-  { path: 'popular', component: TvListComponent, data: { title: 'popular' } },
-  { path: 'upcoming', component: TvListComponent, data: { title: 'upcoming' } },
-  { path: 'latest', component: LatestComponent, data: { title: 'latest' } },
-  { path: 'top-rated', component: TvListComponent, data: { title: 'top-rated' } },
-  { path: 'now-playing', component: TvListComponent, data: { title: 'now-playing' } },
+  { path: 'popular', component: TvListComponent, data: { title: 'popular', name: 'Popular Tv-show' } },
+  { path: 'upcoming', component: TvListComponent, data: { title: 'upcoming', name: 'Upcoming Tv-show' } },
+  { path: 'latest', component: LatestComponent, data: { title: 'latest', name: 'Latest Tv-show' } },
+  { path: 'top-rated', component: TvListComponent, data: { title: 'top-rated', name: 'Top-rated Tv-show' } },
+  { path: 'now-playing', component: TvListComponent, data: { title: 'now-playing', name: 'Now-playing Tv-show' } },
 
   { path: 'popular/:id', component: DetailsComponent },
   { path: 'upcoming/:id', component: DetailsComponent },
