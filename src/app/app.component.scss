@@ -144,3 +144,10 @@
 ::ng-deep .mat-expansion-indicator::after {
   color: var(--text-color) !important;
 }
+
+@media only screen and (max-width: 600px) {
+  .search-bar {
+    width: calc(100% - 20px);
+    margin: 0px 10px;
+  }
+}

@@ -3,7 +3,7 @@
     margin: 0px 50px;
 }
 .poster-section > img {
-    width: 20vw;
+    width: calc(100% - 20px);
     padding: 0px 10px 0px 10px;
 }
 .poster-section > div > div > img {
@@ -83,3 +83,11 @@
     color: var(--app-background);
     font-family: "Open Sans", sans-serif;
 }
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: calc(100% - 20px);
+        margin: 0px 10px;
+    }
+}
+  

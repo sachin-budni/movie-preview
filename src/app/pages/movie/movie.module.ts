@@ -18,8 +18,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { VideoPipe } from 'src/app/pipes/video.pipe';
+// import { VideoPipe } from 'src/app/pipes/video.pipe';
 import { MovieLayoutComponent } from './movie-layout/movie-layout.component';
+import { UserMaterialModule } from 'src/app/components/user-material.module';
 
 const MATERIAL_MODULE = [
   MatSidenavModule,
@@ -44,12 +45,12 @@ const MATERIAL_MODULE = [
     TrendingChartComponent,
     LatestMoviesComponent,
     MovieLayoutComponent,
-    VideoPipe,
   ],
   imports: [
     CommonModule,
     MovieRoutingModule,
-    MATERIAL_MODULE
+    MATERIAL_MODULE,
+    UserMaterialModule
   ],
   providers: []
 })

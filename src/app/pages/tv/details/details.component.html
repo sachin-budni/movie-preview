@@ -1,5 +1,5 @@
 <div *ngIf="($tvDetails | async) as tv" class="container">
-    <div class="row main-head">
+    <div class="row column-md main-head">
         <div class="poster-section">
             <img [src]="tv.poster_path ? 'https://image.tmdb.org/t/p/w500'+tv.poster_path : 'assets/no_poster.jpg'" alt="">
             <div class="row justify-content-center network">
@@ -24,15 +24,17 @@
             <div class="p-tb-1"></div>
             <h4 class="title-header" *ngIf="tv.created_by.length !== 0">Created By:</h4>
             <div class="row">
-                <div *ngFor="let director of tv.created_by">
-                    <img class="profile-pic" [src]="'https://image.tmdb.org/t/p/w500'+director.profile_path" alt="">
+                <div *ngFor="let director of tv.created_by" style="text-align: center;">
+                    <img class="profile-pic" [src]="director.profile_path ? 'https://image.tmdb.org/t/p/w500'+director.profile_path : 'assets/account_dp.svg'" alt="">
                     <p class="overview">{{director.name}}</p>
                 </div>
             </div>
             <div class="p-tb-1"></div>
             <h6 class="language">Languages : <span *ngFor="let lag of tv.spoken_languages">{{lag.english_name}}</span></h6>
             <div class="p-tb-1"></div>
-            <button mat-stroked-button class="button-color" (click)="playTrailer()"><mat-icon>play_arrow</mat-icon>Play Trailer</button>
+            <ng-container *ngIf="tv.videos && tv.videos?.results && tv.videos?.results.length !== 0">
+                <button mat-stroked-button class="button-color" (click)="playTrailer(tv.videos.results[0])"><mat-icon>play_arrow</mat-icon>Play Trailer</button>
+            </ng-container>
         </div>
     </div>
     <app-tv [Movies]="$similarTV" (pages)="nextOrPreviousPage($event)" [MovieClassName]="routeName"></app-tv>

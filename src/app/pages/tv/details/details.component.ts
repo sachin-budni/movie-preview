@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { VideoComponent } from 'src/app/components/video/video.component';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
@@ -19,7 +21,8 @@ export class DetailsComponent implements OnInit {
   type: any = 'tv';
   constructor(private route: ActivatedRoute,
               private movie: MovieService,
-              private domSanitizer: DomSanitizer) { }
+              private domSanitizer: DomSanitizer,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(s => {
@@ -36,8 +39,13 @@ export class DetailsComponent implements OnInit {
   nextOrPreviousPage(e: any): void {
     this.$similarTV = this.movie.similar(this.id, e, this.type);
   }
-  playTrailer(): void {
-    console.log('sds');
+  playTrailer(video: any): void {
+    console.log(video);
+    let dialogRef = this.dialog.open(VideoComponent, {
+      width: '800px',
+      data: {video},
+      panelClass: 'video-dailog'
+    });
   }
 
 }

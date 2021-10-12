@@ -15,9 +15,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DetailsComponent } from './details/details.component';
 import { LatestComponent } from './latest/latest.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UserMaterialModule } from 'src/app/components/user-material.module';
 const MATERIAL_MODULE = [
   MatSidenavModule,
   MatToolbarModule,
@@ -31,7 +33,8 @@ const MATERIAL_MODULE = [
   MatSlideToggleModule,
   MatTooltipModule,
   MatExpansionModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule
 ];
 
 
@@ -40,7 +43,8 @@ const MATERIAL_MODULE = [
   imports: [
     CommonModule,
     TvRoutingModule,
-    MATERIAL_MODULE
+    MATERIAL_MODULE,
+    UserMaterialModule
   ]
 })
 export class TvModule { }
