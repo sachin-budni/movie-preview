@@ -1,4 +1,4 @@
-<div class="main-movie" *ngIf="$movieDetails | async as movie">
+<!-- <div class="main-movie" *ngIf="$movieDetails | async as movie">
   <div class="movie-title">
     <p class="title">{{movie.title}}</p>
   </div>
@@ -23,7 +23,6 @@
     <button *ngFor="let genre of movie.genres" class="chip-btn">{{ genre.name }}</button>
   </div>
   <div class="row overflow-auto">
-    <!-- <img [src]="cast.profile_path" alt=""> -->
     <img *ngFor="let cast of ($cast | async)?.cast"
       class="cast-img"
       [src]="cast.profile_path ? 'https://image.tmdb.org/t/p/w500'+cast.profile_path : 'assets/account_dp.svg'"
@@ -42,7 +41,6 @@
   <ng-container *ngIf="movie?.backdrop_path">
     <img class="poster last" [src]="'https://image.tmdb.org/t/p/w500'+movie.backdrop_path" alt="">
   </ng-container>
-  <!-- {{$video | async | json}} -->
   <ng-container *ngFor="let video of movie.videos?.results">
     <div class="videoWrapper">
       <iframe class="video" [src]="'https://www.youtube.com/embed/'+video.key | video" frameborder="0"
@@ -54,4 +52,47 @@
     <p class="title">Similar Movies</p>
   </div>
 </div>
-<app-movie [Movies]="$similarMovies" (pages)="nextOrPreviousPage($event)" [MovieClassName]="routeName"></app-movie>
+<app-movie [Movies]="$similarMovies" (pages)="nextOrPreviousPage($event)" [MovieClassName]="routeName"></app-movie> -->
+
+<div *ngIf="$movieDetails | async as movie" class="container">
+  <!-- <pre>{{ movie | json }}</pre> -->
+  <div class="row column-md main-head">
+      <div class="poster-section">
+          <img [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w500'+movie.poster_path : 'assets/no_poster.jpg'" alt="">
+          <div class="row justify-content-center network" *ngIf="movie.production_companies.length !== 0">
+              <div class="row align-items-center">
+                  <img *ngIf="movie.production_companies.length !== 0" [src]="'https://image.tmdb.org/t/p/w500'+movie.production_companies[0].logo_path" alt="">
+              </div>
+              <div class="watch-line">
+                  <p>Now Streaming</p>
+                  <b>Watch Now</b>
+              </div>
+          </div>
+      </div>
+      <div class="tv-details">
+          <h3 class="title">{{movie.title}}</h3>
+          <span *ngFor="let gen of movie.genres" class="genres">{{gen.name}}</span>
+          <div class="p-tb-1"></div>
+          <i class="tag-line">{{movie.tagline}}</i>
+          <div class="p-tb-1"></div>
+          <h4 class="title-header" *ngIf="movie.overview">Overview :</h4>
+          <div class="p-t-1"></div>
+          <p class="overview">{{movie.overview}}</p>
+          <div class="p-tb-1"></div>
+          <!-- <h4 class="title-header" *ngIf="($cast | async)?.cast.length !== 0">Created By:</h4>
+          <div class="row">
+              <div *ngFor="let cast of ($cast | async)?.cast" style="text-align: center;">
+                  <img class="profile-pic" [src]="cast.profile_path ? 'https://image.tmdb.org/t/p/w500'+cast.profile_path : 'assets/account_dp.svg'" alt="">
+                  <p class="overview">{{cast.name}}</p>
+              </div>
+          </div> -->
+          <h6 class="language" *ngIf="movie.release_date">Release : <span>{{movie.release_date | date:'longDate'}}</span></h6>
+          <h6 class="language" *ngIf="movie.spoken_languages.length !== 0">Languages : <span *ngFor="let lag of movie.spoken_languages; let i=index">{{(movie.spoken_languages.length - 1) === i ? lag.english_name : lag.english_name+",  "}}</span></h6>
+          <div class="p-tb-1"></div>
+          <ng-container *ngIf="movie.videos && movie.videos?.results && movie.videos?.results.length !== 0">
+              <button mat-stroked-button class="button-color" (click)="playTrailer(movie.videos.results[0])"><mat-icon>play_arrow</mat-icon>Play Trailer</button>
+          </ng-container>
+      </div>
+  </div>
+  <app-movie [Movies]="$similarMovies" (pages)="nextOrPreviousPage($event)" [MovieClassName]="routeName"></app-movie>
+</div>

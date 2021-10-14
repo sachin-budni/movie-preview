@@ -110,7 +110,7 @@ export class AppComponent {
 
   onSubmitMovieSearch(movie: any): void {
     if (movie && typeof movie !== 'string') {
-      this.router.navigate(['/popular', movie.movie.id ]);
+      this.router.navigate(['/movie/popular', movie.movie.id ]);
     }
   }
 
