@@ -25,15 +25,18 @@ export class ThemeDirective implements OnInit, OnDestroy {
   }
 
   updateTheme(themeName: any): void {
-    const element = this.elementRef.nativeElement;
-    const theme = (Theme as any)[themeName];
-    const keys = Object.keys(theme);
-    keys.forEach((key: any) => {
-      if (key && theme[key]) {
-        (element.style as CSSStyleDeclaration).setProperty(key, theme[key]);
-        (this.document.body.style as CSSStyleDeclaration).setProperty(key, theme[key]);
-      }
-    });
+    const element:HTMLElement = this.elementRef.nativeElement;
+    const theme = themeName === 'dark' ? 'light' : 'dark'
+    element.classList.add(themeName);
+    element.classList.remove(theme);
+    // const theme = (Theme as any)[themeName];
+    // const keys = Object.keys(theme);
+    // keys.forEach((key: any) => {
+    //   if (key && theme[key]) {
+    //     (element.style as CSSStyleDeclaration).setProperty(key, theme[key]);
+    //     (this.document.body.style as CSSStyleDeclaration).setProperty(key, theme[key]);
+    //   }
+    // });
   }
 
   ngOnDestroy(): void {

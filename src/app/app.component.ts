@@ -139,7 +139,7 @@ export class AppComponent {
   }
 
   changeToggle(event: MatSlideToggleChange): any {
-    console.log(event.checked);
+    // console.log(event.checked);
     if (event.checked) {
       this.themeService.setActiveThem('light');
       this.activeThem = 'light';

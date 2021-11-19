@@ -27,9 +27,6 @@ export class MovieDetailsComponent implements OnInit {
       this.$movieDetails = this.movie.getDetails(this.id, this.type);
       this.$similarMovies = this.movie.similar(this.id, 1, this.type);
       this.$movieReview = this.movie.moviesReviews(this.id, 1);
-      // const path = window.location.pathname;
-      // const f2 = path.indexOf('/', 1);
-      // this.routeName = path.substr(1, f2 - 1);
       const path = window.location.pathname;
       const f1 = path.indexOf('/', 1);
       const f2 = path.substr(f1).lastIndexOf('/');
