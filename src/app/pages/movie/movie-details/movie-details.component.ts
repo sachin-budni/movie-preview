@@ -3,6 +3,8 @@ import { ActivatedRoute} from '@angular/router';
 import { MovieService } from '../../../service/movie.service';
 import { Observable, of } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { VideoComponent } from 'src/app/components/video/video.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-movie-details',
@@ -19,7 +21,10 @@ export class MovieDetailsComponent implements OnInit {
   routeName: any = 'popular';
   type: any = 'movie';
   id: any = '';
-  constructor(private route: ActivatedRoute, private movie: MovieService, private domSanitizer: DomSanitizer) { }
+  constructor(private route: ActivatedRoute,
+    private movie: MovieService,
+    private domSanitizer: DomSanitizer,
+    private dialog: MatDialog) { }
 
   ngOnInit(): any {
     this.route.params.subscribe(s => {
@@ -45,6 +50,10 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   playTrailer(video: any) {
-
+    let dialogRef = this.dialog.open(VideoComponent, {
+      width: '800px',
+      data: {video},
+      panelClass: 'video-dailog'
+    });
   }
 }
