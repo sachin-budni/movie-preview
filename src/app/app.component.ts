@@ -15,7 +15,7 @@ import { ThemeService } from './theme/theme.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss', './material.scss']
 })
 export class AppComponent {
   activetedRouterName: any;
